@@ -24,26 +24,26 @@ public class TestDao {
 
 	public String getClient() {
 
-		String result=null;
-		String name="강광용";
-		String sql = "select clientName from test where clientName='"+name+"'";
+		String result = null;
+		String name = "강광용";
+		String sql = "select clientName from test where clientName='" + name + "'";
 
 		Connection conn = null;
-	      Statement stmt = null;
-	      ResultSet rs = null;
-	      try {
-	         conn = DBManager.getConnection();
-	         stmt = (Statement) conn.createStatement();
-	         rs = stmt.executeQuery(sql);
-	         while (rs.next()) {
-	           result = rs.getString("clientName");
-	         }
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } finally {
-	         DBManager.close(conn, stmt, rs);
-	      }
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			stmt = (Statement) conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				result = rs.getString("clientName");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
 
-	      return result;
+		return result;
 	}
 }

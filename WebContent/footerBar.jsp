@@ -4,12 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<!-- W3.CSS Container -->
-	<div class="w3-light-grey w3-container w3-padding-32"
-		style="margin-top: 75px; padding-right: 58px">
+	<div class="w3-light-grey w3-container w3-padding-32" style="margin-top: 75px; padding-right: 58px">
 		<p class="w3-right">
 			Powered by Rnb_Team2
 		</p>

@@ -21,6 +21,9 @@ public class ActionFactory {
 		if (command.equals("main")) {
 			action = new IndexAction();
 		}
+		else if(command.equals("")) {
+			action = null;
+		}
 
 		return action;
 	}
