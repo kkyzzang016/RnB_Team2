@@ -15,9 +15,11 @@ public class DBManager {
 		Connection conn = null;
 		try {
 			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource)envContext.lookup("jdbc/mysql");
+			Context envContext = (Context) initContext.lookup("java:comp/env");
+			DataSource ds = (DataSource)envContext.lookup("jdbc/test");
+
 			conn = ds.getConnection();
+			System.out.println("DB연동 성공!");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
