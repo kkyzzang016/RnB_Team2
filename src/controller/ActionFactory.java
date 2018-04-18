@@ -1,7 +1,11 @@
 package controller;
 
 import controller.action.Action;
+import controller.action.BillingAction;
+import controller.action.BuyTicketAction;
 import controller.action.IndexAction;
+import controller.action.StatusAction;
+import controller.action.TimeAction;
 
 public class ActionFactory {
 
@@ -21,10 +25,18 @@ public class ActionFactory {
 		if (command.equals("main")) {
 			action = new IndexAction();
 		}
-		else if(command.equals("")) {
-			action = null;
+		else if(command.equals("status")) {
+			action = new StatusAction();
 		}
-
+		else if(command.equals("time")) {
+			action = new TimeAction();
+		}
+		else if(command.equals("billing")) {
+			action = new BillingAction();
+		}
+		else if(command.equals("buyTicket")) {
+			action = new BuyTicketAction();
+		}
 		return action;
 	}
 }
