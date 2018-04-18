@@ -17,7 +17,7 @@ public class TimeAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String begin ="2018-04-17 09:15:49";
+		String begin ="2018-04-18 15:52:00";
 		long now = System.currentTimeMillis();
 
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -30,7 +30,6 @@ public class TimeAction implements Action {
 			Date beginDate = dayTime.parse(begin);
 
 			long statusTime = (endDate.getTime() - beginDate.getTime()) / 1000;
-
 
 			out.print(statusTime);
 		} catch (ParseException e) {

@@ -22,75 +22,84 @@
 				<b>정액권 구매</b>
 			</h1>
 			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
-		</div>
+	</div>
 
 	<!-- 본문 -->
 
-	  <div class="w3-row-padding w3-grayscale">
+	<br><br>
+  <div class="w3-row-padding w3-whitescale">
 
-	  <form name="form1" method="post">
     <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+     <div class="w3-light-gray">
+     <br>
+        <center><img src="imgs/tickets/oneMonth.JPG" alt="1개월" style="width:60%"></center><br>
         <div class="w3-container">
           <h3>1개월 권</h3>
           <p class="w3-opacity">1개월 권</p>
+          <form name="form1" method="post">
           <p align="center">
           분당 M타워 1개월 <br>주차 정액권을 구매합니다.<br><br>
-          <input type="checkbox" name="check1" value="120000">&nbsp동의합니다.
+          <input type="checkbox" name="check1">&nbsp동의합니다.
+          <input type="hidden" name="fee" value="120000">
+          <input type="hidden" name="imgsrc" value="imgs/tickets/oneMonth.JPG">
           </p>
           <p align="center">
           <br>
-          <input type="submit" value="120,000 원" onclick="go_ticket1()"
+          <input type="button" value="120,000 원" onclick="go_ticket1()"
           class="w3-button w3-blue gray w3-padding-large w3-hover-black"></p>
+          </form>
         </div>
       </div>
     </div>
-    </form>
 
-    <form name="form2" method="post">
     <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+     <div class="w3-gray">
+     <br>
+        <center><img src="imgs/tickets/threeMonth.JPG" alt="3개월" style="width:60%"></center><br>
         <div class="w3-container">
           <h3>3개월 권</h3>
           <p class="w3-opacity">3개월 권</p>
+          <form name="form2" method="post">
           <p align="center">
           분당 M타워 3개월 <br>주차 정액권을 구매합니다.<br><br>
           <input type="checkbox" name="check2" value="300000">&nbsp동의합니다.
+          <input type="hidden" name="fee" value="300000">
+          <input type="hidden" name="imgsrc" value="imgs/tickets/threeMonth.JPG">
           </p>
           <p align="center">
           <br>
-          <input type="submit" value="300,000 원" onclick="go_ticket2()"
+          <input type="button" value="300,000 원" onclick="go_ticket2()"
           class="w3-button w3-blue gray w3-padding-large w3-hover-black"></p>
+          </form>
         </div>
       </div>
     </div>
-    </form>
 
-    <form name="form3" method="post">
     <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
+     <div class="w3-light-grey">
+     <br>
+        <center><img src="imgs/tickets/sixMonth.JPG" alt="6개월" style="width:60%"></center><br>
         <div class="w3-container">
           <h3>6개월 권</h3>
           <p class="w3-opacity">6개월 권</p>
+          <form name="form3" method="post">
           <p align="center">
           분당 M타워 6개월 <br>주차 정액권을 구매합니다.<br><br>
           <input type="checkbox" name="check3" value="520000">&nbsp동의합니다.
+          <input type="hidden" name="fee" value="520000">
+          <input type="hidden" name="imgsrc" value="imgs/tickets/sixMonth.JPG">
           </p>
           <p align="center">
           <br>
-          <input type="submit" value="520,000 원" onclick="go_ticket3()"
+          <input type="button" value="520,000 원" onclick="go_ticket3()"
           class="w3-button w3-blue gray w3-padding-large w3-hover-black"></p>
+          </form>
         </div>
       </div>
     </div>
-    </form>
 
   </div>
 
-<!--  <input type="hidden" name="fee" value="120000"> -->
 <%@ include file="../tiles/footerBar.jsp"%>
 
 </body>

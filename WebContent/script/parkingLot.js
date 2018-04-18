@@ -33,12 +33,23 @@
 			dataType : "text",
 			success : function(data) {
 				var result = document.getElementById("result");
+				if(data<=0){
+				$("#outcar").prop("disabled",true);
+				result.innerHTML = "주차예약시간 전입니다.";
+				}
+				else{
+					$("#outcar").prop("disabled",false);
 				var date = data/86400;
 				var hour = (data%86400)/3600;
 				var min = ((data%86400)%3600)/60;
 				var sec = ((data%86400)%3600)%60;
-				result.innerHTML = "<h2>"+parseInt(date)+"일 "+parseInt(hour)+"시간 "+parseInt(min)+"분 "+sec+"초</h2>";
+
+				var totalMin = parseInt(data/60);
+				var money = (parseInt(totalMin/10)-3)*500 + 1000;
+
+				result.innerHTML = "<h2>"+parseInt(date)+"일 "+parseInt(hour)+"시간 "+parseInt(min)+"분 "+sec+"초 <br><br></h2>";
 				document.form1.time.value = data;
+				}
 			}
 		});
 	}
@@ -57,7 +68,7 @@
 			alert("동의 여부를 체크해주세요.");
 			document.form1.check1.focus();
 		} else {
-			document.form1.action = "Team2Servlet?command=";
+			document.form1.action = "Team2Servlet?command=purchaseConfirm";
 			document.form1.submit();
 		}
 	}
@@ -66,7 +77,7 @@
 			alert("동의 여부를 체크해주세요.");
 			document.form2.check2.focus();
 		} else {
-			document.form2.action = "Team2Servlet?command=";
+			document.form2.action = "Team2Servlet?command=purchaseConfirm";
 			document.form2.submit();
 		}
 	}
@@ -75,7 +86,7 @@
 			alert("동의 여부를 체크해주세요.");
 			document.form3.check3.focus();
 		} else {
-			document.form3.action = "Team2Servlet?command=";
+			document.form3.action = "Team2Servlet?command=purchaseConfirm";
 			document.form3.submit();
 		}
 	}

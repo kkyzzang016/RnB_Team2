@@ -3,7 +3,9 @@ package controller;
 import controller.action.Action;
 import controller.action.BillingAction;
 import controller.action.BuyTicketAction;
+import controller.action.ContactAction;
 import controller.action.IndexAction;
+import controller.action.PurchaseConfirmAction;
 import controller.action.StatusAction;
 import controller.action.TimeAction;
 
@@ -37,6 +39,13 @@ public class ActionFactory {
 		else if(command.equals("buyTicket")) {
 			action = new BuyTicketAction();
 		}
+		else if(command.equals("purchaseConfirm")) {
+			action = new PurchaseConfirmAction();
+		}
+		else if(command.equals("contact")) {
+			action = new ContactAction();
+		}
+
 		return action;
 	}
 }
