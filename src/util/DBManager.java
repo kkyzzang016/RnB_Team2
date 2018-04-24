@@ -26,7 +26,6 @@ public class DBManager {
 		return conn;
 	}
 
-	//select�� ������ �� ���ҽ� ������ ���� �޼ҵ�
 	public static void close(Connection conn, Statement stmt, ResultSet rs) {
 		try {
 			rs.close();
@@ -50,6 +49,16 @@ public class DBManager {
 		try {
 			pstmt.close();
 			conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			pstmt.close();
+			conn.close();
+			rs.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

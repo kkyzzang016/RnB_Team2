@@ -5,6 +5,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+function go_ticket1(){
+	if (!document.form1.check1.checked) {
+		alert("동의 여부를 체크해주세요.");
+		document.form1.check1.focus();
+	} else {
+		document.form1.action = "Team2Servlet?command=purchaseConfirm";
+		document.form1.submit();
+	}
+}
+function go_ticket2(){
+	if (!document.form2.check2.checked) {
+		alert("동의 여부를 체크해주세요.");
+		document.form2.check2.focus();
+	} else {
+		document.form2.action = "Team2Servlet?command=purchaseConfirm";
+		document.form2.submit();
+	}
+}
+function go_ticket3(){
+	if (!document.form3.check3.checked) {
+		alert("동의 여부를 체크해주세요.");
+		document.form3.check3.focus();
+	} else {
+		document.form3.action = "Team2Servlet?command=purchaseConfirm";
+		document.form3.submit();
+	}
+}
+</script>
 </head>
 <body>
 <%@ include file="../tiles/sideBar.jsp"%>

@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
 
-<script type="text/javascript" src="script/parkingLot.js"></script>
 </head>
 <style>
 	body, h1, h2, h3, h4, h5 {

@@ -5,6 +5,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+function requestAjax() {
+	$.ajax({
+		type : "POST",
+		url : "Team2Servlet?command=time",
+
+		dataType : "text",
+		success : function(data) {
+			var result = document.getElementById("result");
+			if(data<=0){
+			$("#outcar").prop("disabled",true);
+			result.innerHTML = "주차예약시간 전입니다.";
+			}
+			else{
+				$("#outcar").prop("disabled",false);
+			var date = data/86400;
+			var hour = (data%86400)/3600;
+			var min = ((data%86400)%3600)/60;
+			var sec = ((data%86400)%3600)%60;
+
+			var totalMin = parseInt(data/60);
+			var money = (parseInt(totalMin/10)-3)*500 + 1000;
+
+			result.innerHTML = "<h2>"+parseInt(date)+"일 "+parseInt(hour)+"시간 "+parseInt(min)+"분 "+sec+"초 <br><br></h2>";
+			document.form1.time.value = data;
+			}
+		}
+	});
+}
+setInterval(function() {
+	requestAjax();
+}, 1000);
+
+function go(){
+	document.form1.action = "Team2Servlet?command=billing";
+	document.form1.submit();
+}
+</script>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body>
