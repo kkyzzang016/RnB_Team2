@@ -1,4 +1,4 @@
-package controller.action.reservation;
+package controller.action;
 
 import java.io.IOException;
 import java.util.Map;
@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.action.Action;
 import test.TestDao;
 
 public class IndexAction implements Action{
@@ -19,8 +18,6 @@ public class IndexAction implements Action{
 
 		TestDao tDao = TestDao.getInstance();
 		String result = tDao.getClient();
-
-		request.setAttribute("Prod", result);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -1,11 +1,11 @@
 package controller;
 
 import controller.action.Action;
+import controller.action.IndexAction;
 import controller.action.commterTicket.BuyTicketAction;
 import controller.action.commterTicket.PurchaseConfirmAction;
 import controller.action.contact.ContactAction;
 import controller.action.reservation.LotsCountDeleteAction;
-import controller.action.reservation.IndexAction;
 import controller.action.reservation.ReserveInsertAction;
 import controller.action.reservation.ReservationAction;
 import controller.action.reservation.ReserveConfirmAction;
@@ -15,6 +15,7 @@ import controller.action.status.TimeAction;
 import controller.action.user.AddUserAction;
 import controller.action.user.ConfirmIdAction;
 import controller.action.user.GoConfirmIdAction;
+import controller.action.user.LoginAction;
 import controller.action.user.SignInAction;
 import controller.action.user.SignUpAction;
 
@@ -81,7 +82,11 @@ public class ActionFactory {
 
 		} else if (command.equals("addUser")) {
 			action = new AddUserAction();
-		}
+
+		}  else if (command.equals("loginCheck")) {
+	         action = new LoginAction();
+
+	    }
 
 		return action;
 	}

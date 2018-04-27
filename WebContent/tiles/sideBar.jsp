@@ -23,6 +23,10 @@ function go_signUp() {
 	location.href = "Team2Servlet?command=signUp";
 }
 
+function go_login(){
+	   location.href = "Team2Servlet?command=signIn"
+}
+
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
@@ -63,6 +67,7 @@ href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha38
   <div class="w3-bar-block">
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:32px">Home</a>
     <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Showcase</a>
+    <a href="#" onclick="go_login()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-check"></i>Login</a>
     <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Services</a>
     <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Designers</a>
     <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Packages</a>

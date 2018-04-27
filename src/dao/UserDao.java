@@ -26,7 +26,7 @@ public class UserDao {
     private ResultSet rs = null;
 
     public int login(String userID, String userPassword) {
-        String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
+        String SQL = "SELECT userPassword FROM user WHERE userID = ?";
         try {
         	conn=DBManager.getConnection();
             pstmt = conn.prepareStatement(SQL);
