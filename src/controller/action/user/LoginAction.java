@@ -28,19 +28,19 @@ public class LoginAction implements Action {
 		int result = userDAO.login(userID, userPassword);
 
 		if (result == 1) {
-			url = "/user/loginCheck.jsp";
+			url = "WEB-INF/views/user/loginCheck.jsp";
 			user = userDAO.getUserInfo(userID, userPassword);
 			session.setAttribute("userInfo", user);
 		} else if (result == 0) {
-			url = "/user/login.jsp";
+			url = "WEB-INF/views/user/login.jsp";
 			request.setAttribute("message", "비밀번호가 틀렸습니다.");
 
 		} else if (result == -1) {
-			url = "/user/login.jsp";
+			url = "WEB-INF/views/user/login.jsp";
 			request.setAttribute("message", "ID가 존재하지 않습니다.");
 
 		} else if (result == -2) {
-			url = "/user/login.jsp";
+			url = "WEB-INF/views/user/login.jsp";
 			request.setAttribute("message", "시스템 오류입니다.");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

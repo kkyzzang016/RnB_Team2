@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +7,9 @@
 <style>
 .w3-bar-block a:hover{
 text-shadow: gray 3px 3px 3px;
+}
+.w3-sidebar{
+box-shadow:5px 5px 15px #000;
 }
 </style>
 <script>
@@ -22,15 +23,11 @@ location.href = "Team2Servlet?command=reservation";
 }
 
 function go_signUp() {
-	location.href = "Team2Servlet?command=signUp";
+   location.href = "Team2Servlet?command=signUp";
 }
 
 function go_login(){
-	location.href = "Team2Servlet?command=signIn"
-}
-
-function go_logout(){
-	location.href = "Team2Servlet?command=logout"
+      location.href = "Team2Servlet?command=signIn"
 }
 
 function w3_open() {
@@ -44,10 +41,10 @@ function w3_close() {
 }
 
 function w3_goStatus(){
-	location.href="Team2Servlet?command=status";
+   location.href="Team2Servlet?command=status";
 }
 function w3_goBuyTicket(){
-	location.href="Team2Servlet?command=buyTicket";
+   location.href="Team2Servlet?command=buyTicket";
 }
 // Modal Image Gallery
 function onClick(element) {
@@ -67,30 +64,18 @@ href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha38
 <nav class="w3-sidebar w3-blue gray w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:28px">Close Menu</a>
   <div class="w3-container">
-    <h3 class="w3-padding-64" style="font-size:32px" align="center"><a href="Team2Servlet?command=main"><b>RnB_Team2<br>Parking Lots</b></a></h3>
+    <h3 class="w3-padding-64" style="font-size:32px" align="center"><a href="Team2Servlet?command=main"><b><i class="fas fa-moon"></i>RnB_Team2<br>Parking Lots</b></a></h3>
   </div>
 
   <div class="w3-bar-block">
-    <c:choose>
-    <c:when test="${userInfo eq null}">
-    <a href="#" onclick="go_login()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-check"></i>Login</a>
-    </c:when>
-    <c:otherwise>
-   	<label style="font-size:25px">${userInfo.userID }, ${userInfo.userCarnum }</label>
-    <a href="#" onclick="go_logout()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-check"></i>Logout</a>
-    </c:otherwise>
-    </c:choose>
-	<a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:32px">Home</a>
-    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Showcase</a>
-    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Services</a>
-    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Designers</a>
-    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Packages</a>
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">Contact</a>
-    <a href="#" onclick="w3_goStatus()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">주차 정보</a>
-    <a href="#" onclick="w3_goBuyTicket()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px">정액권 구매</a>
-    <a href="#" onclick="op_reservation()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-car"></i>Reservation</a>
-    <a href="#" onclick="op_confirm()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-check"></i>Confirm</a>
-    <a href="#" onclick="go_signUp()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-check"></i>Sign up</a>
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:32px"><i class="fas fa-home"></i>Home</a>
+    <a href="#" onclick="go_login()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-user"></i> Login</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-comment-alt"></i> Contact</a>
+    <a href="#" onclick="w3_goStatus()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-car"></i> 주차 정보</a>
+    <a href="#" onclick="w3_goBuyTicket()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-ticket-alt"></i> 정액권 구매</a>
+    <a href="#" onclick="op_reservation()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-calendar-alt"></i> Reservation</a>
+    <a href="#" onclick="op_confirm()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-check"></i> Confirm</a>
+    <a href="#" onclick="go_signUp()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-user-plus"></i> Sign up</a>
   </div>
 </nav>
 </body>
