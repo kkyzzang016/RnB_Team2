@@ -7,7 +7,7 @@
 
 <body>
 
-<%@ include file="../tiles/sideBar.jsp"%>
+<%@ include file="../views/tiles/sideBar.jsp"%>
 
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -16,7 +16,7 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-<%@ include file="../tiles/headerBar.jsp"%>
+<%@ include file="../views/tiles/headerBar.jsp"%>
 
 <!-- Header -->
 		<div class="w3-container" style="margin-top: 80px" id="showcase">
@@ -179,7 +179,7 @@
 <!-- End page content -->
 </div>
 
-<%@ include file="../tiles/footerBar.jsp"%>
+<%@ include file="../views/tiles/footerBar.jsp"%>
 
 </body>
 </html>

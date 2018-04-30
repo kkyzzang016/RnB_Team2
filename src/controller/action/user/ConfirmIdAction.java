@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.action.Action;
-import dao.JoinDao;
+import dao.UserDao;
 
 public class ConfirmIdAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url="/user/confirmId.jsp";
+		String url="WEB-INF/views/user/confirmId.jsp";
 
 		String userId=request.getParameter("userID");
 		String id = request.getParameter("userID");
-		JoinDao jDao = JoinDao.getInstance();
-		String result = jDao.confirmId(userId);
+		UserDao uDao = UserDao.getInstance();
+		String result = uDao.confirmId(userId);
 		System.out.println(result);
 		System.out.println(id);
 

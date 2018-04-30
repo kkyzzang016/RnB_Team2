@@ -37,9 +37,7 @@
 				</c:choose>
 			</c:otherwise>
 		</c:choose>
-
 	</form>
-
 
 <script type="text/javascript">
       function memberJoin() {

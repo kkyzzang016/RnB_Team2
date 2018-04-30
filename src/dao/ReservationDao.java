@@ -25,7 +25,7 @@ public class ReservationDao {
    private ResultSet rs = null;
 
 
-   public int pinsert(ReservationVO vo) {
+   public void reservationInsert(ReservationVO vo) {
 
       String sql = "insert into reservation values(?,?,?)";
       int cnt = 0 ;
@@ -41,10 +41,9 @@ public class ReservationDao {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBManager.close(conn, pstmt, rs);
+         DBManager.close(conn, pstmt);
       }
 
-      return cnt;
    }
    public ReservationVO rselectone(String n) {
 
@@ -88,5 +87,25 @@ public class ReservationDao {
       return cnt;
    } // memberDelete
 
+   public String getReserveTime(String userCarnum) {
+	   String sql = "select i_car_t from reservation where userCarnum=?";
+	   String result=null;
+	   try {
+	         conn = DBManager.getConnection();
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1,userCarnum);
+	         rs = pstmt.executeQuery();
+	         if(rs.next()) {
+	        	 result = rs.getString("i_car_t");
+	        	 System.out.println(result);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }
+
+	   return result;
+   }
 
 }

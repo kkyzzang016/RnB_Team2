@@ -14,7 +14,7 @@ public class BillingAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="/parking/billing.jsp";
+		String url="WEB-INF/views/parking/billing.jsp";
 
 		int time = Integer.parseInt(request.getParameter("time"))/60;
 		int money;

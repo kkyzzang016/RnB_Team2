@@ -16,7 +16,7 @@ import dto.ReservationVO;
 public class LotsCountDeleteAction implements Action{
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String url = "/reservation/confirm.jsp";
+String url = "WEB-INF/views/reservation/confirm.jsp";
 
       String floor="f1";
       String n_car="5885889";

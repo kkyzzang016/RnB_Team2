@@ -23,10 +23,9 @@ public class ParkingDao {
    private PreparedStatement pstmt = null;
    private ResultSet rs = null;
 
-   public ParkingVO fselect(String floor) {
+   public int floorSelect(String floor) {
 
-
-      ParkingVO parking = new ParkingVO();
+      int spare=0;
       String sql = "select * from parking where floor=?";
 
       try {
@@ -35,8 +34,7 @@ public class ParkingDao {
          pstmt.setString(1,floor);
          rs = pstmt.executeQuery();
          while (rs.next()) {
-            parking.setSpare(rs.getInt("spare"));
-            System.out.println(parking.getSpare());
+            spare = rs.getInt("spare");
          }
       } catch (SQLException e) {
          e.printStackTrace();
@@ -44,12 +42,11 @@ public class ParkingDao {
          DBManager.close(conn, pstmt, rs);
       }
 
-      return parking;
+      return spare;
    }
 
-public int pSpare(ParkingVO vo) {
+public void pSpare(String floor) {
    String sql=null;
-   int cnt = 0;
 /*if(cancel버튼이 눌리면)
 {sql = "update parking set spare=spare+1 where floor=?";
    }else if(예약 버튼이 눌리면){*/
@@ -60,15 +57,14 @@ public int pSpare(ParkingVO vo) {
       try {
          conn = DBManager.getConnection();
          pstmt = conn.prepareStatement(sql);
-         pstmt.setString(1,vo.getFloor());
-         cnt=pstmt.executeUpdate();
+         pstmt.setString(1,floor);
+         pstmt.executeUpdate();
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
          DBManager.close(conn, pstmt, rs);
       }
 
-      return cnt;
    }
 
 public int mSpare(ParkingVO vo) {

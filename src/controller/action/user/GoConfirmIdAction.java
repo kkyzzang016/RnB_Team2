@@ -13,7 +13,7 @@ public class GoConfirmIdAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/user/confirmId.jsp";
+		String url = "WEB-INF/views/user/confirmId.jsp";
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 	    dispatcher.forward(request, response);

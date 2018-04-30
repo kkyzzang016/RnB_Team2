@@ -24,7 +24,7 @@
 
    </div>
 
-      <h1>안녕하세요  ${userID}님</h1>
+      <h1>안녕하세요  ${userInfo.userID}님 </h1>
 
    <!-- 본문 -->
    </div>

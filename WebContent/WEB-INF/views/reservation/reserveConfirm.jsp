@@ -108,15 +108,15 @@ function goCancel(){
                </tr>
                <tr>
                   <th>차번호</th>
-                  <td>${res1.userCarnum}</td>
+                  <td>${reserveInfo.userCarnum}</td>
                </tr>
                <tr>
                   <th>예약 된 주차장</th>
-                  <td>${res1.floor}층</td>
+                  <td>${reserveInfo.floor}층</td>
                </tr>
                <tr>
                   <th>시작 시간</th>
-                  <td>${res1.i_car_t}</td>
+                  <td>${reserveInfo.i_car_t}</td>
                </tr>
 <tr ><td colspan="2" style="text-align:right; padding-right: 30px;">
             <!-- <input type="button" onclick="goCancel();" value="cancel" > -->

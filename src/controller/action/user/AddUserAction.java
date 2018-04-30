@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.action.Action;
-import dao.JoinDao;
+import dao.UserDao;
 import dto.UserVO;
 
 public class AddUserAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/user/signUpComplete.jsp";
+		String url = "WEB-INF/views/user/signUpComplete.jsp";
 
 		UserVO uVo = new UserVO();
 		uVo.setUserID(request.getParameter("userID"));
@@ -24,9 +24,8 @@ public class AddUserAction implements Action{
 		uVo.setUserEmail(request.getParameter("userEmail"));
 		uVo.setUserCarnum(request.getParameter("userCarnum"));
 		uVo.setUserPhone(request.getParameter("userPhone"));
-		JoinDao jDao = JoinDao.getInstance();
-		jDao.addUser(uVo);
-
+		UserDao uDao = UserDao.getInstance();
+		uDao.addUser(uVo);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

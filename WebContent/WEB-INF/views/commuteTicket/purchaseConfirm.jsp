@@ -25,7 +25,7 @@
 
 		<div class="w3-row w3-padding-64 " align="center">
 
-				<div class="w3-col m6 w3-padding-large">
+
 					<h1 class="w3-center">About Catering</h1>
 					<br>
 					<h5 class="w3-center">이용 약관</h5>
@@ -54,7 +54,6 @@
 						6. 기타 이용자의 전용상품권 구매 신청이 회사와 제3자의 이익을 훼손할 위험이 있다고 판단되는 경우<br>
 
 					</p>
-				</div>
 			</div>
 	</div>
 	<!-- 본문 -->

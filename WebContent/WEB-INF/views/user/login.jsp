@@ -23,6 +23,7 @@
             <b>Interior Design</b>
          </h1>
     <h1 class="w3-xxxlarge w3-text-blue gray"><b>Sign Up.</b></h1>
+    <font color="red">${message}</font>
     <hr style="width:50px;border:5px solid blue" class="w3-round">
 
     <form action="Team2Servlet?command=loginCheck"  method="post" name="userinput">
@@ -35,7 +36,7 @@
         <label>P W</label>
         <input class="w3-input w3-border" type="password" name="userPassword" required>
       </div>
-      <input type = "submit" class="w3-button w3-center w3-hover-indigo" style="width:100%" >Login</button>
+      <input type = "submit" class="w3-button w3-center w3-hover-indigo" style="width:100%" >
 
     </form>
   </div>

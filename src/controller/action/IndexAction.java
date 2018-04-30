@@ -14,7 +14,7 @@ public class IndexAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/mainView.jsp";
+		String url = "WEB-INF/views/mainView.jsp";
 
 		TestDao tDao = TestDao.getInstance();
 		String result = tDao.getClient();

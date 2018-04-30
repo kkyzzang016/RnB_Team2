@@ -15,7 +15,7 @@ public class ReserveConfirmAction implements Action{
 
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String url = "/reservation/reserveConfirm.jsp";
+      String url = "WEB-INF/views/reservation/reserveConfirm.jsp";
 
 
       //예약 조회

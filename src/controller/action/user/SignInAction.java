@@ -13,7 +13,7 @@ public class SignInAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/user/login.jsp";
+		String url = "WEB-INF/views/user/login.jsp";
 
 
 	      RequestDispatcher dispatcher = request.getRequestDispatcher(url);

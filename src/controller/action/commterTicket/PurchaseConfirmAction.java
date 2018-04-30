@@ -14,7 +14,7 @@ public class PurchaseConfirmAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url ="/commuteTicket/purchaseConfirm.jsp";
+		String url ="WEB-INF/views/commuteTicket/purchaseConfirm.jsp";
 
 		String fee = request.getParameter("fee");
 		String imgsrc = request.getParameter("imgsrc");

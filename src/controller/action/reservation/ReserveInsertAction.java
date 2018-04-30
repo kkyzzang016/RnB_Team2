@@ -47,37 +47,37 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.action.Action;
 import dao.ParkingDao;
 import dto.ParkingVO;
 import dao.ReservationDao;
 import dto.ReservationVO;
+import dto.UserVO;
 public class ReserveInsertAction implements Action{
 
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String url = "/reservation/confirm.jsp";
+      String url = "WEB-INF/views/reservation/reserveConfirm.jsp";
+
+      HttpSession session = request.getSession(true);
+      UserVO uVo = (UserVO) session.getAttribute("userInfo");
 
       String floor=request.getParameter("floor");
-      String n_car="5885889";
+      String userCarnum=uVo.getUserCarnum();
       String i_car_t=request.getParameter("i_car_t");
 
-        ParkingVO vo1 = new ParkingVO();
-      ReservationVO vo = new ReservationVO();
-      vo.setFloor(floor);
-      vo.setUserCarnum(n_car);
-      vo.setI_car_t(i_car_t);
-      vo1.setFloor(floor);
-      ReservationDao rDAO = ReservationDao.getInstance();
-       ParkingDao pcDao = ParkingDao.getInstance();
-         int cnt = rDAO.pinsert(vo);
-         int cnt2 = pcDao.pSpare(vo1);
-         request.setAttribute("rcnt", cnt);
-         request.setAttribute("icnt", cnt2);
-      request.setAttribute("refloor", floor);
-      request.setAttribute("ren_car", n_car);
-      request.setAttribute("rei_car_t", i_car_t);
+      ReservationVO rVo = new ReservationVO();
+      rVo.setFloor(floor);
+      rVo.setUserCarnum(userCarnum);
+      rVo.setI_car_t(i_car_t);
+      ReservationDao rDao = ReservationDao.getInstance();
+      ParkingDao pDao = ParkingDao.getInstance();
+
+      rDao.reservationInsert(rVo);
+      pDao.pSpare(floor);
+      request.setAttribute("reserveInfo", rVo);
 
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);
