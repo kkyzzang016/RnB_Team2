@@ -5,6 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+$(document).ready(checkSession);
+function checkSession(){
+	if(<%=session.getAttribute("userInfo")==null%>){
+		alert("로그인 정보가 없습니다.");
+		location.href="Team2Servlet?command=signIn"
+	}
+}
+</script>
 </head>
 <body>
 <%@ include file="../tiles/sideBar.jsp"%>

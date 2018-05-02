@@ -5,6 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(checkSession);
+function checkSession(){
+	if(<%=session.getAttribute("userInfo")==null%>){
+		alert("로그인 정보가 없습니다.");
+		location.href="Team2Servlet?command=signIn"
+	}
+}
+</script>
 </head>
 
 <body>
@@ -40,7 +50,10 @@
           <h2>${money} 원</h2>
         </li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+        <form name="form" method="post">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="getOutCar">Sign Up</button>
+          <input type="hidden" name="money" value="${money}">
+          </form>
         </li>
       </ul>
     </div>

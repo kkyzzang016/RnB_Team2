@@ -5,6 +5,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(checkSession);
+function checkSession(){
+	if(<%=session.getAttribute("userInfo")==null%>){
+		alert("로그인 정보가 없습니다.");
+		location.href="Team2Servlet?command=signIn"
+	}
+}
+function agree(){
+	if (!document.form.confirm.checked) {
+		alert("동의 여부를 체크해주세요.");
+		document.form.confirm.focus();
+	} else {
+		document.form.payConfirm.disabled;
+		$.ajax({
+			type : "POST",
+			url : "Team2Servlet?command=payCertificate",
+			dataType : "text",
+			success : function(data){
+				alert("회원님의 이메일로 인증코드가 전송되었습니다.");
+				$('#result').html(data);
+				}
+			});
+	}
+}
+function goComplete(){
+	if(document.form.codeValue.value==document.form.code.value){
+	alert("구매가 완료되었습니다. 감사합니다.");
+	document.form.action="Team2Servlet?command=payComplete";
+	document.form.submit();
+	}
+	else{
+	alert("인증코드가 일치하지 않습니다.");
+	return false;
+	}
+}
+</script>
 </head>
 <body>
 <%@ include file="../tiles/sideBar.jsp"%>
@@ -24,11 +62,10 @@
 			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
 
 		<div class="w3-row w3-padding-64 " align="center">
-
-
-					<h1 class="w3-center">About Catering</h1>
+					<img src="${imgsrc}" width="30%">
 					<br>
-					<h5 class="w3-center">이용 약관</h5>
+					<h1 class="w3-center">이용 약관</h1>
+					<h3 class="w3-center" style="color:red">본 서비스는 이메일 인증을 통한 가상결제로 운영되고 있습니다.</h3>
 					<p class="w3-large">
 												제1조 (목적, 적용범위 등)<br>
 						①	 이 약관은 알앤비2팀(이하 “회사”)의 주차장서비스에서 전용주차 서비스를 이용하기 위해 사용되는 전용상품권과 관련하여 회사와 이용자 사이의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.<br>
@@ -57,9 +94,14 @@
 			</div>
 	</div>
 	<!-- 본문 -->
-
-	${fee }
-
+	<form name="form" method="post" align="center">
+	<h2>총 금액 : ${fee}원</h2><br>
+	<div id="result">
+	<input type="checkbox" name="confirm">&nbsp동의합니다.<br>
+	<input type="button" class="w3-button w3-blue gray w3-padding-large w3-hover-black" name="payConfirm" onclick="agree()" value="인증하기">
+	<h3 class="w3-center" style="color:red">버튼을 누른 후 잠시만 기다려주세요!</h3>
+	</div>
+	</form>
 	<!-- 본문 끝 -->
 	</div>
 

@@ -1,3 +1,4 @@
+<%@page import="dto.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,13 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+$(document).ready(checkSession);
+function checkSession(){
+	if(<%=session.getAttribute("userInfo")==null%>){
+		alert("로그인 정보가 없습니다.");
+		location.href="Team2Servlet?command=signIn"
+	}
+}
+
 function go_ticket1(){
 	if (!document.form1.check1.checked) {
 		alert("동의 여부를 체크해주세요.");
 		document.form1.check1.focus();
 	} else {
-		document.form1.action = "Team2Servlet?command=purchaseConfirm";
+		document.form1.action = "Team2Servlet?command=purchaseConfirm&fee=120000&imgsrc=imgs/tickets/oneMonth.JPG";
 		document.form1.submit();
 	}
 }
@@ -20,7 +30,7 @@ function go_ticket2(){
 		alert("동의 여부를 체크해주세요.");
 		document.form2.check2.focus();
 	} else {
-		document.form2.action = "Team2Servlet?command=purchaseConfirm";
+		document.form2.action = "Team2Servlet?command=purchaseConfirm&fee=300000&imgsrc=imgs/tickets/threeMonth.JPG";
 		document.form2.submit();
 	}
 }
@@ -29,7 +39,7 @@ function go_ticket3(){
 		alert("동의 여부를 체크해주세요.");
 		document.form3.check3.focus();
 	} else {
-		document.form3.action = "Team2Servlet?command=purchaseConfirm";
+		document.form3.action = "Team2Servlet?command=purchaseConfirm&fee=520000&imgsrc=imgs/tickets/sixMonth.JPG";
 		document.form3.submit();
 	}
 }

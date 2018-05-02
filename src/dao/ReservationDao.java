@@ -97,7 +97,6 @@ public class ReservationDao {
 	         rs = pstmt.executeQuery();
 	         if(rs.next()) {
 	        	 result = rs.getString("i_car_t");
-	        	 System.out.println(result);
 	         }
 	      } catch (SQLException e) {
 	         e.printStackTrace();

@@ -3,8 +3,11 @@ package controller;
 import controller.action.Action;
 import controller.action.IndexAction;
 import controller.action.commterTicket.BuyTicketAction;
+import controller.action.commterTicket.PayCertificateAction;
+import controller.action.commterTicket.PayCompleteAction;
 import controller.action.commterTicket.PurchaseConfirmAction;
 import controller.action.contact.ContactAction;
+import controller.action.contact.GoContactAction;
 import controller.action.reservation.CheckZeroSpareAction;
 import controller.action.reservation.LotsCountDeleteAction;
 import controller.action.reservation.ReserveInsertAction;
@@ -58,6 +61,9 @@ public class ActionFactory {
 		} else if (command.equals("contact")) {
 			action = new ContactAction();
 
+		} else if (command.equals("goContact")) {
+			action = new GoContactAction();
+
 		} else if (command.equals("reservation")) {
 			action = new ReservationAction();
 
@@ -93,6 +99,12 @@ public class ActionFactory {
 
 	    } else if (command.equals("checkZero")) {
 	         action = new CheckZeroSpareAction();
+
+	    } else if (command.equals("payCertificate")) {
+	         action = new PayCertificateAction();
+
+	    } else if (command.equals("payComplete")) {
+	         action = new PayCompleteAction();
 
 	    }
 

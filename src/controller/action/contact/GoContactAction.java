@@ -8,23 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.action.Action;
-import util.MailSending;
 
-public class ContactAction implements Action{
+public class GoContactAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="index.jsp";
+		String url="WEB-INF/views/contact/contact.jsp";
 
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String message = request.getParameter("message");
-
-		MailSending mt = MailSending.getInstance();
-		mt.sendMail("자신에게 하고싶은말 By RnBTeam2", message,name,email);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
+
 	}
 
 }

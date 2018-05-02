@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,8 +28,16 @@ function go_signUp() {
    location.href = "Team2Servlet?command=signUp";
 }
 
+function go_contact() {
+	   location.href = "Team2Servlet?command=goContact";
+}
+
 function go_login(){
       location.href = "Team2Servlet?command=signIn"
+}
+
+function go_logout(){
+    location.href = "Team2Servlet?command=logout"
 }
 
 function w3_open() {
@@ -38,6 +48,10 @@ function w3_open() {
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
+}
+
+function go_home(){
+	location.href="Team2Servlet?command=main";
 }
 
 function w3_goStatus(){
@@ -68,9 +82,16 @@ href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha38
   </div>
 
   <div class="w3-bar-block">
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:32px"><i class="fas fa-home"></i>Home</a>
-    <a href="#" onclick="go_login()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-user"></i> Login</a>
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-comment-alt"></i> Contact</a>
+    <a href="#" onclick="go_home()" class="w3-bar-item w3-button w3-hover-white" style="font-size:32px"><i class="fas fa-home"></i>Home</a>
+	<c:choose>
+	<c:when test="${userInfo eq null }">
+	<a href="#" onclick="go_login()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-user"></i> Login</a>
+	</c:when>
+	<c:otherwise>
+	<a href="#" onclick="go_logout()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-user"></i> LogOut</a>
+	</c:otherwise>
+	</c:choose>
+    <a href="#" onclick="go_contact()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-comment-alt"></i> Contact</a>
     <a href="#" onclick="w3_goStatus()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-car"></i> 주차 정보</a>
     <a href="#" onclick="w3_goBuyTicket()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-ticket-alt"></i> 정액권 구매</a>
     <a href="#" onclick="op_reservation()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-calendar-alt"></i> Reservation</a>

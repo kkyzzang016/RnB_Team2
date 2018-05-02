@@ -4,7 +4,7 @@
 <html>
 <head>
 <link rel="icon" href="imgs/moon.png">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 
 button{
@@ -47,13 +47,13 @@ button:hover:before,button:hover:after{
 
 </style>
 <script type="text/javascript">
-/* function re_cancel()
-{
-    openWin = window.open("reservation_cancel.jsp",
-            "예약 취소 ", "width=200, height=150, resizable = no, scrollbars = no");
-
-
-} */
+$(document).ready(checkSession);
+function checkSession(){
+	if(<%=session.getAttribute("userInfo")==null%>){
+		alert("로그인 정보가 없습니다.");
+		location.href="Team2Servlet?command=signIn"
+	}
+}
 function goCancel(){
    if(confirm("예약 취소 하시겠습니까?")){
 
@@ -104,7 +104,7 @@ function goCancel(){
             <table class=w3-table-all id="co">
                <tr>
                   <th>예약자 이름</th>
-                  <td>로그인한 이름</td>
+                  <td>${userName}</td>
                </tr>
                <tr>
                   <th>차번호</th>

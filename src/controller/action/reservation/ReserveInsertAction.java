@@ -78,6 +78,7 @@ public class ReserveInsertAction implements Action{
       rDao.reservationInsert(rVo);
       pDao.pSpare(floor);
       request.setAttribute("reserveInfo", rVo);
+      request.setAttribute("userName", uVo.getUserName());
 
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);

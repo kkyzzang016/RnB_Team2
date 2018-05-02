@@ -14,7 +14,7 @@ public class LogoutAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "WEB-INF/views/reindex.jsp";
+		String url = "index.jsp";
 
 		HttpSession session = request.getSession(true);
 		session.setAttribute("userInfo", null);

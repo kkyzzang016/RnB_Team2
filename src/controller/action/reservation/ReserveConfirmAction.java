@@ -6,9 +6,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.action.Action;
 import dto.ReservationVO;
+import dto.UserVO;
 import dao.ParkingDao;
 import dao.ReservationDao;
 public class ReserveConfirmAction implements Action{
@@ -17,14 +19,14 @@ public class ReserveConfirmAction implements Action{
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String url = "WEB-INF/views/reservation/reserveConfirm.jsp";
 
+      HttpSession session = request.getSession(true);
+      UserVO uVo = (UserVO) session.getAttribute("userInfo");
 
-      //예약 조회
+      ReservationDao rDao = ReservationDao.getInstance();
+      ReservationVO rVo = rDao.rselectone(uVo.getUserCarnum());
 
-      ReservationDao rDao =ReservationDao.getInstance();
-      ReservationVO floor1 = rDao.rselectone("587557");
-
-
-      request.setAttribute("res1", floor1);
+      request.setAttribute("reserveInfo", rVo);
+      request.setAttribute("userName", uVo.getUserName());
 
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);

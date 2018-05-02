@@ -1,9 +1,8 @@
+<%@page import="dto.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,66 +13,126 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <script type="text/javascript">
-$(document).ready(requestAjax);
-function requestAjax(){
-	var spare = new Array();
-	$.ajax({
-	type : "POST",
-	url : "Team2Servlet?command=checkZero",
-	dataType : 'json',
-	success : function(data){
-		$.each(data, function(key, val){
-			spare[parseInt(key)] = val;
-			});
-		document.form1.spare.value=spare[0];
-		document.form2.spare.value=spare[1];
-		document.form3.spare.value=spare[2];
-
-		if(spare[0]==0){
-			document.form1.res.disabled=true;
-		}
-		if(spare[1]==0){
-			document.form2.res.disabled=true;
-		}
-		if(spare[2]==0){
-			document.form3.res.disabled=true;
-		}
-		}
-	});
+$(document).ready(checkSession);
+function checkSession(){
+	if(<%=session.getAttribute("userInfo")==null%>){
+		alert("로그인 정보가 없습니다.");
+		location.href="Team2Servlet?command=signIn";
+	}else{
+		requestAjax();
+	}
 }
-	function goReserve1() {
-		if (document.form1.i_car_t.value == null) {
-			document.form1.i_car_t.focus();
-		} else {
-			if (confirm("예약하시겠습니까?")) {
-				document.form1.action = "Team2Servlet?command=reserveInsert";
-				document.form1.submit();
-			}
-		}
-	}
-	function goReserve2() {
-		if (document.form2.i_car_t.value == null) {
-			document.form2.i_car_t.focus();
-		} else {
-			if (confirm("예약하시겠습니까?")) {
-				document.form2.action = "Team2Servlet?command=reserveInsert";
-				document.form2.submit();
-			}
-		}
-	}
-	function goReserve3() {
-		if (document.form3.i_car_t.value == null) {
-			document.form3.i_car_t.focus();
-		} else {
-			if (confirm("예약하시겠습니까?")) {
-				document.form3.action = "Team2Servlet?command=reserveInsert";
-				document.form3.submit();
-			}
-		}
-	}
+function requestAjax(){
+   var spare = new Array();
+   $.ajax({
+   type : "POST",
+   url : "Team2Servlet?command=checkZero",
+   dataType : 'json',
+   success : function(data){
+      $.each(data, function(key, val){
+         spare[parseInt(key)] = val;
+         });
+      document.form1.spare.value=spare[0];
+      document.form2.spare.value=spare[1];
+      document.form3.spare.value=spare[2];
+
+      if(spare[0]==0){
+         document.form1.res.disabled=true;
+      }
+      if(spare[1]==0){
+         document.form2.res.disabled=true;
+      }
+      if(spare[2]==0){
+         document.form3.res.disabled=true;
+      }
+      }
+   });
+}
+   function goReserve1() {
+      if (document.form1.i_car_t.value == null) {
+         document.form1.i_car_t.focus();
+      } else {
+         if (confirm("예약하시겠습니까?")) {
+            document.form1.action = "Team2Servlet?command=reserveInsert";
+            document.form1.submit();
+         }
+      }
+   }
+   function goReserve2() {
+      if (document.form2.i_car_t.value == null) {
+         document.form2.i_car_t.focus();
+      } else {
+         if (confirm("예약하시겠습니까?")) {
+            document.form2.action = "Team2Servlet?command=reserveInsert";
+            document.form2.submit();
+         }
+      }
+   }
+   function goReserve3() {
+      if (document.form3.i_car_t.value == null) {
+         document.form3.i_car_t.focus();
+      } else {
+         if (confirm("예약하시겠습니까?")) {
+            document.form3.action = "Team2Servlet?command=reserveInsert";
+            document.form3.submit();
+         }
+      }
+   }
+
+    function s_mouseover(mode) {
+      if(mode == "1"){
+         if (document.form1.spare.value > 80) {
+            form1.spare.style.color = "rgba(0, 255, 0,0.5)";
+            form1.spare.value="여유";
+            }
+         else if(document.form1.spare.value > 40) {
+            form1.spare.style.color = "rgba(255, 255, 0,0.5)";
+            form1.spare.value="양호";
+            }
+         else{
+            form1.spare.style.color = "rgba(255, 0, 0,0.5)";
+            form1.spare.value="부족";
+            }
+         }
+      else if(mode=="2"){
+         if (document.form2.spare.value > 80) {
+            form2.spare.style.color = "rgba(0, 255, 0,0.5)";
+            form2.spare.value="여유";
+            }
+         else if (document.form2.spare.value > 40) {
+            form2.spare.style.color = "rgba(255, 255, 0,0.5)";
+            form2.spare.value="양호";
+            }
+         else{
+            form2.spare.style.color = "rgba(255, 0, 0,0.5)";
+            form2.spare.value="부족";
+            }
+         }
+   else if(mode=="3"){
+      if (document.form3.spare.value > 80) {
+         form3.spare.style.color = "rgba(0, 255, 0,0.5)";
+         form3.spare.value="여유";
+         }
+      else if (document.form3.spare.value > 40) {
+         form3.spare.style.color = "rgba(255, 255, 0,0.5)";
+         form3.spare.value="양호";
+         }
+      else{
+         form3.spare.style.color = "rgba(255, 0, 0,0.5)";
+         form3.spare.value="부족";
+         }
+      }
+}
+
+   function s_mouseout() {
+      form1.spare.style.color ="";
+      form2.spare.style.color ="";
+      form3.spare.style.color ="";
+       requestAjax();
+   }
 </script>
 <body>
-
+	<input type="hidden" name="userReserveInfo" value="${result}">
    <%@ include file="../tiles/sideBar.jsp"%>
 
 
@@ -115,7 +174,7 @@ function requestAjax(){
                   <input type="hidden" id="floor" name="floor" value="f1">F1</li>
                   <li class="w3-padding-16"><img src="imgs/car.jpg" style="width: 100%" onclick="onClick(this)"></li>
                   <li class="w3-padding-16"><label> 잔여 수 : </label>
-                  <input type="text" <%-- value="${park1}" --%> size="6" name="spare" readonly>/
+                  <input type="text" size="6" name="spare" readonly onmouseover="s_mouseover('1')" onmouseout="s_mouseout()">/
                   <label>100</label></li>
                   <li class="w3-padding-16"><label> 시작 시간 : </label>
                   <input type="datetime-local" id="i_car_t" name="i_car_t" required></li>
@@ -134,7 +193,7 @@ function requestAjax(){
                   <input type="hidden" id="floor" name="floor" value="f2">F2</li>
                   <li class="w3-padding-16"><img src="imgs/car.jpg" style="width: 100%" onclick="onClick(this)"></li>
                   <li class="w3-padding-16"><label> 잔여 수 : </label>
-                  <input  type="text" <%-- value="${park2}" --%> size="6" name="spare" readonly>/
+                  <input  type="text" size="6" name="spare" readonly onmouseover="s_mouseover('2')" onmouseout="s_mouseout()">/
                   <label>100</label></li>
                   <li class="w3-padding-16"><label> 시작 시간 : </label>
                   <input type="datetime-local" id="i_car_t" name="i_car_t" required></li>
@@ -153,7 +212,7 @@ function requestAjax(){
                   <input type="hidden" id="floor" name="floor" value="f3">F3</li>
                   <li class="w3-padding-16"><img src="imgs/car.jpg" style="width: 100%" onclick="onClick(this)"></li>
                   <li class="w3-padding-16"><label> 잔여 수 : </label>
-                  <input type="text" <%-- value="${park3}" --%> size="6" name="spare" readonly>/
+                  <input type="text" size="6" name="spare" readonly onmouseover="s_mouseover('3')" onmouseout="s_mouseout()">/
                   <label>100</label></li>
                   <li class="w3-padding-16"><label> 시작 시간 : </label>
                   <input type="datetime-local" id="i_car_t" name="i_car_t" required></li>

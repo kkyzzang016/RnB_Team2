@@ -45,46 +45,75 @@ public class ParkingDao {
       return spare;
    }
 
-public void pSpare(String floor) {
-   String sql=null;
-/*if(cancel버튼이 눌리면)
-{sql = "update parking set spare=spare+1 where floor=?";
-   }else if(예약 버튼이 눌리면){*/
-      sql = "update parking set spare=spare-1 where floor=?";
-      /*}*/
+	public void pSpare(String floor) {
+	   String sql=null;
+	/*if(cancel버튼이 눌리면)
+	{sql = "update parking set spare=spare+1 where floor=?";
+	   }else if(예약 버튼이 눌리면){*/
+	      sql = "update parking set spare=spare-1 where floor=?";
+	      /*}*/
 
 
-      try {
-         conn = DBManager.getConnection();
-         pstmt = conn.prepareStatement(sql);
-         pstmt.setString(1,floor);
-         pstmt.executeUpdate();
-      } catch (SQLException e) {
-         e.printStackTrace();
-      } finally {
-         DBManager.close(conn, pstmt, rs);
-      }
+	      try {
+	         conn = DBManager.getConnection();
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1,floor);
+	         pstmt.executeUpdate();
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }
 
-   }
+	   }
 
-public int mSpare(ParkingVO vo) {
-   String sql=null;
-   int cnt1 = 0;
-      sql = "update parking set spare=spare+1 where floor=?";
-      try {
-         conn = DBManager.getConnection();
-         pstmt = conn.prepareStatement(sql);
-         pstmt.setString(1,vo.getFloor());
-         System.out.println("층층층층"+vo.getFloor());
-         cnt1=pstmt.executeUpdate();
+	public int mSpare(ParkingVO vo) {
+	   String sql=null;
+	   int cnt1 = 0;
+	      sql = "update parking set spare=spare+1 where floor=?";
+	      try {
+	         conn = DBManager.getConnection();
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1,vo.getFloor());
+	         System.out.println("층층층층"+vo.getFloor());
+	         cnt1=pstmt.executeUpdate();
 
 
-      } catch (SQLException e) {
-         e.printStackTrace();
-      } finally {
-         DBManager.close(conn, pstmt, rs);
-      }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }
 
-      return cnt1;
-   }
+	      return cnt1;
+	   }
+	public String userReserveInfo(String userCarnum) {
+
+		String result=null;
+		String sql = "select i_car_t from reservation where userCarnum=?";
+		try {
+	         conn = DBManager.getConnection();
+	         pstmt = conn.prepareStatement(sql);
+	         if(userCarnum!=null) {
+	         pstmt.setString(1,userCarnum);
+	         }
+	         else {
+	         pstmt.setString(1,"55555");
+	         }
+	         rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            result = rs.getString("i_car_t");
+	         }
+	         else {
+	        	 result="null";
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }
+
+		return result;
+	}
+
 }

@@ -22,7 +22,7 @@
         <h1 class="w3-jumbo">
             <b>Interior Design</b>
          </h1>
-    <h1 class="w3-xxxlarge w3-text-blue gray"><b>Sign Up.</b></h1>
+    <h1 class="w3-xxxlarge w3-text-blue gray"><b>Sign In.</b></h1>
     <font color="red">${message}</font>
     <hr style="width:50px;border:5px solid blue" class="w3-round">
 
