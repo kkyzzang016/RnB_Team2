@@ -27,6 +27,9 @@ public class ReserveConfirmAction implements Action{
 
       request.setAttribute("reserveInfo", rVo);
       request.setAttribute("userName", uVo.getUserName());
+      if(uVo.getUserName()==null || rVo.getUserCarnum()==null) {
+      request.setAttribute("message", "xxxx");
+      }
 
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);

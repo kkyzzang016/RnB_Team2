@@ -28,7 +28,7 @@ public class LoginAction implements Action {
 		int result = userDAO.login(userID, userPassword);
 
 		if (result == 1) {
-			url = "WEB-INF/views/user/loginCheck.jsp";
+			url = "index.jsp";
 			user = userDAO.getUserInfo(userID, userPassword);
 			session.setAttribute("userInfo", user);
 		} else if (result == 0) {

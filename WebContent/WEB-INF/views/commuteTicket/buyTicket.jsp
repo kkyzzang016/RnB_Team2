@@ -15,7 +15,12 @@ function checkSession(){
 		location.href="Team2Servlet?command=signIn"
 	}
 }
-
+function checkreserve(){
+	   if(<%=session.getAttribute("userInfo")!=null%>){
+	      alert("이미 정액권을 구매하셨습니다.");
+	      location.href="Team2Servlet?command=main";
+	   }
+}
 function go_ticket1(){
 	if (!document.form1.check1.checked) {
 		alert("동의 여부를 체크해주세요.");
@@ -64,6 +69,11 @@ function go_ticket3(){
 	</div>
 
 	<!-- 본문 -->
+	<c:choose>
+	<c:when test="${checkcc == 'yess'}">
+    <script>checkreserve();</script>
+	</c:when>
+	<c:when test="${checkcc == 'noo'}">
 
 	<br><br>
   <div class="w3-row-padding w3-whitescale">
@@ -136,9 +146,12 @@ function go_ticket3(){
         </div>
       </div>
     </div>
+	</div>
+    </c:when>
+    <c:otherwise>error</c:otherwise>
+</c:choose>
 
-  </div>
-
+</div>
 <%@ include file="../tiles/footerBar.jsp"%>
 
 </body>

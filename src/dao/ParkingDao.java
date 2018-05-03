@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dto.ParkingVO;
+import dto.UserVO;
 import util.DBManager;
 public class ParkingDao {
 
@@ -67,15 +68,14 @@ public class ParkingDao {
 
 	   }
 
-	public int mSpare(ParkingVO vo) {
+	public int mSpare(String floor) {
 	   String sql=null;
 	   int cnt1 = 0;
 	      sql = "update parking set spare=spare+1 where floor=?";
 	      try {
 	         conn = DBManager.getConnection();
 	         pstmt = conn.prepareStatement(sql);
-	         pstmt.setString(1,vo.getFloor());
-	         System.out.println("층층층층"+vo.getFloor());
+	         pstmt.setString(1,floor);
 	         cnt1=pstmt.executeUpdate();
 
 
@@ -87,33 +87,23 @@ public class ParkingDao {
 
 	      return cnt1;
 	   }
-	public String userReserveInfo(String userCarnum) {
 
-		String result=null;
-		String sql = "select i_car_t from reservation where userCarnum=?";
+	public int getDiscountInfo(String discountName) {
+		int discountMinute=0;
+		String sql = "select discountMinute from discount where discountName=?";
 		try {
 	         conn = DBManager.getConnection();
 	         pstmt = conn.prepareStatement(sql);
-	         if(userCarnum!=null) {
-	         pstmt.setString(1,userCarnum);
-	         }
-	         else {
-	         pstmt.setString(1,"55555");
-	         }
+	         pstmt.setString(1,discountName);
 	         rs = pstmt.executeQuery();
 	         if (rs.next()) {
-	            result = rs.getString("i_car_t");
-	         }
-	         else {
-	        	 result="null";
+	        	 discountMinute = rs.getInt("discountMinute");
 	         }
 	      } catch (SQLException e) {
 	         e.printStackTrace();
 	      } finally {
 	         DBManager.close(conn, pstmt, rs);
 	      }
-
-		return result;
+		return discountMinute;
 	}
-
 }

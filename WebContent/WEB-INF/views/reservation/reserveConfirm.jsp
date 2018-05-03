@@ -5,47 +5,6 @@
 <head>
 <link rel="icon" href="imgs/moon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<style>
-
-button{
-  background:rgb(244, 67, 54);
-  color:#fff;
-  border:none;
-  position:relative;
-  height:50px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button:hover{
-  background:#fff;
-  color:rgb(244, 67, 54);
-}
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: rgb(244, 67, 54);
-  transition:400ms ease all;
-}
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
-
-
-</style>
 <script type="text/javascript">
 $(document).ready(checkSession);
 function checkSession(){
@@ -60,6 +19,7 @@ function goCancel(){
       document.del.submit();
 
    }
+
 }
 
 </script>
@@ -69,37 +29,29 @@ function goCancel(){
 
    <%@ include file="../tiles/sideBar.jsp"%>
 
-   <!-- Top menu on small screens -->
-   <header
-      class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-   <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right"
-      onclick="w3_open()">☰</a> <span>Rnb_Team2</span> </header>
-
    <!-- Overlay effect when opening sidebar on small screens -->
    <div class="w3-overlay w3-hide-large" onclick="w3_close()"
       style="cursor: pointer" title="close side menu" id="myOverlay"></div>
 
    <!-- !PAGE CONTENT! -->
    <div class="w3-main" style="margin-left: 340px; margin-right: 40px">
-<%
-         request.setCharacterEncoding("UTF-8");
-      %>
+
       <%@ include file="../tiles/headerBar.jsp"%>
-
-
-
 
       <!-- 예약 확인 -->
       <div class="w3-container" id="confirm" style="margin-top: 75px">
-         <h1 class="w3-xxxlarge w3-text-red">
-            <b>예약 확인</b>
+			<h1 class="w3-jumbo">
+				<b>Interior Design</b>
+			</h1>
+         <h1 class="w3-xxxlarge w3-text-blue gray">
+            <b>예약확인</b>
          </h1>
-         <hr style="width: 50px; border: 5px solid red" class="w3-round">
+         <hr style="width: 50px; border: 5px solid blue" class="w3-round">
       </div>
 
-      <div class="w3-row-padding">
-
-
+	<c:choose>
+	<c:when test="${message eq null }">
+	<div class="w3-row-padding">
          <form action="Team2Servlet?command=lotsCountDelete" method="post" name="del" id="del">
             <table class=w3-table-all id="co">
                <tr>
@@ -118,14 +70,32 @@ function goCancel(){
                   <th>시작 시간</th>
                   <td>${reserveInfo.i_car_t}</td>
                </tr>
-<tr ><td colspan="2" style="text-align:right; padding-right: 30px;">
+				<tr >
+				<td colspan="2" style="text-align:right; padding-right: 30px;">
             <!-- <input type="button" onclick="goCancel();" value="cancel" > -->
             <button onclick="goCancel();" value="cancel" >취소</button>
-</td></tr>
+				</td></tr>
          </table>
+         	<input type="hidden" name="userCarnum" value="${reserveInfo.userCarnum}">
+         	<input type="hidden" name="floor" value="${reserveInfo.floor}">
          </form>
       </div>
+	</c:when>
+	<c:otherwise>
+	<div align="center">
+	<h2 align="center">예약 정보가 존재하지 않습니다!</h2>
+	<button onclick="go_main()" class="w3-button w3-blue gray w3-padding-large w3-hover-black">홈으로</button>
+	</div>
+    </c:otherwise>
+      </c:choose>
+
    </div>
    <%@ include file="../tiles/footerBar.jsp"%>
+
+<script>
+      function go_main(){
+		location.href="Team2Servlet?command=main";
+      }
+</script>
 </body>
 </html>

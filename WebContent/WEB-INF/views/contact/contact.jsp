@@ -25,21 +25,22 @@
 			</h1>
 			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
 
-    <p>하고싶은 말</p>
+    <h2>서비스 개선을 위한 건의사항을 적어주세요!</h2>
+    <h3 style="color:red">확인 후 신속한 서비스 개선을 약속드립니다!</h3><br>
     <form action="Team2Servlet?command=contact" target="_blank" method="post">
       <div class="w3-section">
-        <label>Name</label>
+        <label>발신자 성함</label>
         <input class="w3-input w3-border" type="text" name="name" required>
       </div>
       <div class="w3-section">
-        <label>Email</label>
+        <label>발신자 Email 주소</label>
         <input class="w3-input w3-border" type="text" name="email" required>
       </div>
       <div class="w3-section">
-        <label>Message</label>
+        <label>보내는 메시지</label>
         <input class="w3-input w3-border" type="text" name="message" required>
       </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom">Send Message</button>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom">보내기</button>
     </form>
 	</div>
 </div>

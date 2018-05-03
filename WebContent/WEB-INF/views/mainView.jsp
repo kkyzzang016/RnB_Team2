@@ -10,10 +10,11 @@
 }
 
 .bgimg {
-   min-height: 100%;
+   height: 100%;
+   width:auto;
    background-position: center;
-   background-size: cover;
-   background-image: url("imgs/maincar.jpg");
+    background-size: cover;
+
 }
 
 body, html {
@@ -21,7 +22,7 @@ body, html {
 }
 
 #use, .w3-main {
-   min-height: 100%;
+
    background-size: cover;
    background-position: center;
 }
@@ -29,13 +30,15 @@ body, html {
 #use img {
    cursor: pointer;
 }
-
-td{
+#use table{
+ padding-bottom:10%;
+ padding-top:10%;
+}
+#info td {
    width: 250px;
 }
-
 .w3-half {
-   height: 530px;
+   height: 100%;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -121,53 +124,51 @@ td{
    <div class="w3-overlay w3-hide-large" onclick="w3_close()"
       style="cursor: pointer" title="close side menu" id="myOverlay">
    </div>
-
-   <div
-      class="w3-display-container w3-animate-opacity bgimg w3-grayscale-min box">
-      <div class="w3-container w3-display-bottomleft w3-margin-bottom">
-
-      </div>
-   </div>
-
-   <div class="w3-main box" style="margin-left: 300px; margin-right: 0px;   height: 100%;">
-
-   <div class="w3-container w3-padding-64 w3-pale-blue w3-row-padding w3-center" id="use">
-      <div class="w3-content w3-center">
-
-         <table style="padding-top:10%; margin-left:-10%;" >
-            <tr>
-               <td colspan="3"><h1>
-                     <b>사용방법</b>
-                  </h1></td>
-            </tr>
-            <tr>
-               <td><img src="imgs/use1.png" style="margin: 32px"
-                  onclick="javascript:location.href='Team2Servlet?command=buyTicket';"></td>
-               <td><img src="imgs/use3.png" style="margin: 32px"
-                  onclick="javascript:location.href='Team2Servlet?command=reservation';"></td>
-               <td><img src="imgs/use2.png" style="margin: 32px"
-                  onclick="javascript:location.href='Team2Servlet?command=reserveConfirm';"></td>
-            </tr>
-            <tr>
-               <td><b>주차권 구매</b></td>
-               <td><b>예약하기</b></td>
-               <td><b>주차하기</b></td>
-            </tr>
-         </table>
-
-
-      </div>
+   <div class="w3-main box"
+      style="margin-left: 300px; margin-right: 0px; height:auto;">
+   <div class="w3-animate-opacity bgimg w3 box">
+   <img src="imgs/maincar.jpg" style="width:100%; height:100%;">
    </div>
 </div>
+   <div class="w3-main box"
+      style="margin-left: 300px; margin-right: 0px;height:auto;">
 
+      <div
+         class="w3-container w3-padding-64 w3-pale-blue w3-center"
+         id="use" style="height:100%;">
+         <div class="w3-center">
+
+            <table align="center">
+               <tr>
+                  <td colspan="3">
+                        <font size="12rem"><b>사용방법</b><hr></font>
+                     </td>
+               </tr>
+
+               <tr>
+                  <td><img src="imgs/use1.png" style="padding:5% 5% 5% 0%; width: 100%;"
+                     onclick="javascript:location.href='Team2Servlet?command=buyTicket';"></td>
+                  <td><img src="imgs/use3.png" style="padding:5% 5% 5% 0%; width: 100%;"
+                     onclick="javascript:location.href='Team2Servlet?command=reservation';"></td>
+                  <td><img src="imgs/use2.png" style="padding:5% 5% 5% 0%; width: 100%;"
+                     onclick="javascript:location.href='Team2Servlet?command=reserveConfirm';"></td>
+               </tr>
+               <tr>
+                  <td><b>주차권 구매</b></td>
+                  <td><b>예약하기</b></td>
+                  <td><b>주차하기</b></td>
+               </tr>
+            </table>
+
+
+         </div>
+      </div>
+   </div>
 
    <!-- !PAGE CONTENT! -->
    <div class="w3-main box" style="margin-left: 340px; margin-right: 40px">
 
       <%@ include file="../views/tiles/headerBar.jsp"%>
-
-
-
 
       <div class="w3-row-padding">
 
@@ -248,8 +249,7 @@ td{
 
 
                            <img src="imgs/car.jpg" style="width: 80%; padding: 10px;">
-                           <br>
-                           <label> 잔여 수 : </label> <input type="text" size="6"
+                           <br> <label> 잔여 수 : </label> <input type="text" size="6"
                               name="spare" readonly>/ <label>100</label>
                         </form>
                      </div>
@@ -259,8 +259,7 @@ td{
 
 
                            <img src="imgs/car.jpg" style="width: 80%; padding: 10px;">
-                           <br>
-                           <label> 잔여 수 : </label> <input type="text" size="6"
+                           <br> <label> 잔여 수 : </label> <input type="text" size="6"
                               name="spare" readonly>/ <label>100</label>
                         </form>
                      </div>
@@ -270,8 +269,7 @@ td{
 
 
                            <img src="imgs/car.jpg" style="width: 80%; padding: 10px;">
-                           <br>
-                           <label> 잔여 수 : </label> <input type="text" size="6"
+                           <br> <label> 잔여 수 : </label> <input type="text" size="6"
                               name="spare" readonly>/ <label>100</label>
                         </form>
                      </div>

@@ -1,9 +1,7 @@
-package controller.action.status;
+package controller.action.user;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,21 +11,25 @@ import javax.servlet.http.HttpSession;
 
 import controller.action.Action;
 import dao.ReservationDao;
+import dto.ReservationVO;
 import dto.UserVO;
 
-public class StatusAction implements Action{
+public class UsageDetailsAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "WEB-INF/views/member/usageDetails.jsp";
 
-		String url = "WEB-INF/views/parking/myStatus.jsp";
 		HttpSession session = request.getSession(true);
-		UserVO uVo = (UserVO) session.getAttribute("userInfo");
-		ReservationDao rDao = ReservationDao.getInstance();
-		String floor = rDao.selectFloor(uVo.getUserCarnum());
+		UserVO uVo = (UserVO)session.getAttribute("userInfo");
 
-		request.setAttribute("floor", floor);
+		ReservationDao rDao = ReservationDao.getInstance();
+		List<ReservationVO> usageList = rDao.getUsageList(uVo.getUserCarnum());
+
+		request.setAttribute("usageList", usageList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
+
 }

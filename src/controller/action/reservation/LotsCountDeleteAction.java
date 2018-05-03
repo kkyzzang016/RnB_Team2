@@ -1,6 +1,8 @@
 package controller.action.reservation;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,27 +18,22 @@ import dto.ReservationVO;
 public class LotsCountDeleteAction implements Action{
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String url = "WEB-INF/views/reservation/confirm.jsp";
+String url = "WEB-INF/views/reservation/reserveConfirm.jsp";
 
-      String floor="f1";
-      String n_car="5885889";
-      /*if (session != null) {
-         ReservationVO uvo = (ReservationVO)session.getAttribute("uvo");
-         id=uvo.getN_car();
-      }*/
-       ParkingVO vo1 = new ParkingVO();
-      ReservationVO vo = new ReservationVO();
-      vo.setUserCarnum(n_car);
-      vo1.setFloor(floor);
-      ReservationDao rDAO =ReservationDao.getInstance();
-       ParkingDao pcDao = ParkingDao.getInstance();
-       int cnt2 = pcDao.mSpare(vo1);
-       int cnt = rDAO.rdelete(vo);
+      String userCarnum = request.getParameter("userCarnum");
 
+      long now = System.currentTimeMillis();
 
-      request.setAttribute("dcnt", cnt);
-       request.setAttribute("icnt", cnt2);
-       request.setAttribute("den_car", n_car);
+	  SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	  String o_car_t = dayTime.format(new Date(now));
+
+      String floor = request.getParameter("floor");
+      ReservationDao rDao =ReservationDao.getInstance();
+      ParkingDao pDao = ParkingDao.getInstance();
+      pDao.mSpare(floor);
+      rDao.updateReserveCancel(userCarnum, o_car_t);
+
+      request.setAttribute("message", "xxxx");
       RequestDispatcher dispatcher =request.getRequestDispatcher(url);
       dispatcher.forward(request, response);
    }

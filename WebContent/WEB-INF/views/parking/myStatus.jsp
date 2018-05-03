@@ -33,12 +33,18 @@ function requestAjax(){
 function setTime(){
 	result = document.getElementById("result");
 	data = $('#time').val();
-	data++;
 	if(data<=0){
+		data++;
 	$("#outcar").prop("disabled",true);
 	result.innerHTML = "주차예약시간 전입니다.";
 	}
+	else if(data=='null'){
+		$("#outcar").prop("disabled",true);
+		result.innerHTML = "예약정보가 없습니다!";
+		return;
+	}
 	else{
+		data++;
 	$("#outcar").prop("disabled",false);
 	var date = data/86400;
 	var hour = (data%86400)/3600;
@@ -56,7 +62,7 @@ setInterval(function() {
 	setTime();
 }, 1000);
 function go(){
-	document.form1.action = "Team2Servlet?command=billing";
+	document.form1.action = "Team2Servlet?command=billing&time="+document.form1.time.value;
 	document.form1.submit();
 }
 </script>
@@ -85,10 +91,9 @@ function go(){
 		<h2>현재까지 주차시간은..</h2>
 		<form id="form1" name="form1" method="post">
 		<div id="result" >${statusTime }</div>
-		<input type="hidden" id="time" name="time" value="${statusTime }">
-
+		<input type="hidden" id="time" name="time">
+		<input type="hidden" name="floor" value="${floor }">
 		<input type="button" id="outcar" value="출차하기" class="w3-button w3-blue gray w3-padding-large w3-hover-black" onclick="go();">
-
 		</form>
 		</center>
 </div>

@@ -19,12 +19,12 @@ public class ContactAction implements Action{
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String message = request.getParameter("message");
+		String emailPlusName = name+" ("+email+")";
 
 		MailSending mt = MailSending.getInstance();
-		mt.sendMail("자신에게 하고싶은말 By RnBTeam2", message,name,email);
+		mt.sendMail("문의사항", message,emailPlusName,"kwangyong_kang@rnbsoft.com");
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
-
 }

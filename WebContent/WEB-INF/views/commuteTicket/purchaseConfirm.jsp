@@ -34,7 +34,7 @@ function agree(){
 function goComplete(){
 	if(document.form.codeValue.value==document.form.code.value){
 	alert("구매가 완료되었습니다. 감사합니다.");
-	document.form.action="Team2Servlet?command=payComplete";
+	document.form.action="Team2Servlet?command=payTicketComplete";
 	document.form.submit();
 	}
 	else{
@@ -95,10 +95,11 @@ function goComplete(){
 	</div>
 	<!-- 본문 -->
 	<form name="form" method="post" align="center">
-	<h2>총 금액 : ${fee}원</h2><br>
+	<h2>총 금액 : ${fee}원</h2>
+	<input type="hidden" name="fee" value="${fee}"><br>
 	<div id="result">
 	<input type="checkbox" name="confirm">&nbsp동의합니다.<br>
-	<input type="button" class="w3-button w3-blue gray w3-padding-large w3-hover-black" name="payConfirm" onclick="agree()" value="인증하기">
+	<input type="button" class="w3-button w3-blue gray w3-padding-large w3-hover-black" name="payConfirm" onclick="agree()" value="결제하기">
 	<h3 class="w3-center" style="color:red">버튼을 누른 후 잠시만 기다려주세요!</h3>
 	</div>
 	</form>

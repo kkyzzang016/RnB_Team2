@@ -27,9 +27,25 @@ public class PayCompleteAction implements Action{
 		HttpSession session = request.getSession(true);
 		UserVO currentUser = (UserVO) session.getAttribute("userInfo");
 
+		String fee = request.getParameter("fee");
 		LocalDateTime dayTime = LocalDateTime.now();
 	    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	    LocalDateTime endTime = dayTime.plusMonths(3);
+
+	    LocalDateTime endTime=null;
+
+	    switch(fee) {
+	    case "120000":
+	    	endTime = dayTime.plusMonths(1);
+	    	break;
+
+	    case "300000":
+	    	endTime = dayTime.plusMonths(3);
+	    	break;
+
+	    case "520000":
+	    	endTime = dayTime.plusMonths(6);
+	    	break;
+	    }
 
 	    String startDate = dayTime.format(dateTimeFormatter);
 	    String endDate = endTime.format(dateTimeFormatter);

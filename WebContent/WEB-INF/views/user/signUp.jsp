@@ -26,34 +26,34 @@
 
     <form action="Team2Servlet?command=addUser" onsubmit="return joincheck();" method="post" name="userinput">
       <div class="w3-section">
-        <label>I D</label>
+        <label>아이디</label>
         <input class="w3-input w3-border" type="text" name="userID" onfocus="openConfirmid(this.form)" required>
       </div>
       <div class="w3-section">
-        <label>P W</label>
+        <label>비밀번호</label>
         <input class="w3-input w3-border" type="password" name="userPassword" required>
       </div>
       <div class="w3-section">
-        <label>P W (confirm)</label>
+        <label>비밀번호 확인</label>
         <input class="w3-input w3-border" type="password" name="userPasswordconfirm" required>
       </div>
       <div class="w3-section">
-        <label>Name</label>
+        <label>이름</label>
         <input class="w3-input w3-border" type="text" name="userName" required>
       </div>
       <div class="w3-section">
-        <label>Email (with accuracy)</label>
+        <label>이메일 <h3 style="color:red">이메일 인증 서비스를 위하여 정확한 정보를 입력해주세요.</h3></label>
         <input class="w3-input w3-border" type="text" name="userEmail" required>
       </div>
       <div class="w3-section">
-        <label>Car number</label>
+        <label>차량번호</label>
         <input class="w3-input w3-border" type="text" name="userCarnum" required>
       </div>
       <div class="w3-section">
-        <label>Phone</label>
+        <label>휴대전화</label>
         <input class="w3-input w3-border" type="text" name="userPhone" placeholder="-를 없이 입력하세요" required>
       </div>
-      <input type="submit" class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom" name="confirm">Confirm</button>
+      <input type="submit" class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom" name="confirm">
     </form>
   </div>
 

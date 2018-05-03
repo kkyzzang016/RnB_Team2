@@ -14,6 +14,9 @@ import controller.action.reservation.ReserveInsertAction;
 import controller.action.reservation.ReservationAction;
 import controller.action.reservation.ReserveConfirmAction;
 import controller.action.status.BillingAction;
+import controller.action.status.BillingDiscountAction;
+import controller.action.status.CheckTicketAction;
+import controller.action.status.PayFeeCompleteAction;
 import controller.action.status.StatusAction;
 import controller.action.status.TimeAction;
 import controller.action.user.AddUserAction;
@@ -23,6 +26,7 @@ import controller.action.user.LoginAction;
 import controller.action.user.LogoutAction;
 import controller.action.user.SignInAction;
 import controller.action.user.SignUpAction;
+import controller.action.user.UsageDetailsAction;
 
 public class ActionFactory {
 
@@ -103,8 +107,20 @@ public class ActionFactory {
 	    } else if (command.equals("payCertificate")) {
 	         action = new PayCertificateAction();
 
-	    } else if (command.equals("payComplete")) {
+	    } else if (command.equals("payTicketComplete")) {
 	         action = new PayCompleteAction();
+
+	    } else if (command.equals("payFeeComplete")) {
+	    	action = new PayFeeCompleteAction();
+
+	    } else if (command.equals("billingDiscount")) {
+	    	action = new BillingDiscountAction();
+
+	    } else if (command.equals("checkTicket")) {
+	    	action = new CheckTicketAction();
+
+	    } else if (command.equals("usageDetails")) {
+	    	action = new UsageDetailsAction();
 
 	    }
 

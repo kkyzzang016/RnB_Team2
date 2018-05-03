@@ -32,9 +32,9 @@ function checkSession(){
     <hr style="width:50px;border:5px solid blue" class="w3-round">
 
    </div>
-
-      <h1>안녕하세요  ${userInfo.userID}님 </h1>
-
+	<div align="center">
+      <h1>안녕하세요 ${userInfo.userID}님, 환영합니다!</h1>
+	</div>
    <!-- 본문 -->
    </div>
 

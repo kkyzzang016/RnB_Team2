@@ -46,6 +46,8 @@ public class UserDao {
         } catch (Exception e) {
 
             e.printStackTrace();
+        }finally {
+        	DBManager.close(conn, pstmt, rs);
         }
         return -2; // DB 오류
 
@@ -72,6 +74,8 @@ public class UserDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
 		}
     	return uVo;
     }
@@ -126,6 +130,27 @@ public class UserDao {
 	         DBManager.close(conn, pstmt, rs);
 	      }
 	}
+	public String[] checkTicket(String userCarnum) {
+		String sql = "select startDate, endDate from commuterTicket where userCarnum=?";
+		String [] date = new String[2];
+		try {
+	         conn = DBManager.getConnection();
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1,userCarnum);
+	         rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            date[0]=rs.getString("startDate");
+	            date[1]=rs.getString("endDate");
+	         }
+	         else {
+	        	date[0]="nodata";
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }
 
-
+		return date;
+	}
 }

@@ -25,14 +25,19 @@ public class TimeAction implements Action {
 		HttpSession session = request.getSession(true);
 		UserVO uVo = (UserVO) session.getAttribute("userInfo");
 
+		PrintWriter out = response.getWriter();
 		ReservationDao rDao = ReservationDao.getInstance();
 		String begin =rDao.getReserveTime(uVo.getUserCarnum());
+		System.out.println("메시지"+begin);
+		if(begin==null) {
+			out.print("null");
+		}
+		else {
 		long now = System.currentTimeMillis();
 
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String nowTime = dayTime.format(new Date(now));
 
-		PrintWriter out = response.getWriter();
 
 		try {
 			Date endDate = dayTime.parse(nowTime);
@@ -44,6 +49,7 @@ public class TimeAction implements Action {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			out.print("error!!");
+			}
 		}
 	}
 }

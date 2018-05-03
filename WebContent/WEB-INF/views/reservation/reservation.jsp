@@ -22,6 +22,12 @@ function checkSession(){
 		requestAjax();
 	}
 }
+function checkreserve(){
+	   if(<%=session.getAttribute("userInfo")!=null%>){
+	      alert("예약정보가 있습니다.");
+	      location.href="Team2Servlet?command=reserveConfirm";
+	   }
+}
 function requestAjax(){
    var spare = new Array();
    $.ajax({
@@ -123,7 +129,6 @@ function requestAjax(){
          }
       }
 }
-
    function s_mouseout() {
       form1.spare.style.color ="";
       form2.spare.style.color ="";
@@ -132,9 +137,7 @@ function requestAjax(){
    }
 </script>
 <body>
-	<input type="hidden" name="userReserveInfo" value="${result}">
    <%@ include file="../tiles/sideBar.jsp"%>
-
 
    <!-- Overlay effect when opening sidebar on small screens -->
    <div class="w3-overlay w3-hide-large" onclick="w3_close()"
@@ -162,6 +165,11 @@ function requestAjax(){
          <hr style="width: 50px; border: 5px solid blue" class="w3-round">
       </div>
 
+	<c:choose>
+	<c:when test="${checkc eq 'yess'}">
+    <script>checkreserve();</script>
+	</c:when>
+	<c:when test="${checkc eq 'noo'}">
       <div class="w3-row-padding">
 
          <!-- reservation_ok.jsp -->
@@ -225,7 +233,9 @@ function requestAjax(){
          </form>
 
       </div>
-
+	    </c:when>
+    <c:otherwise>error</c:otherwise>
+	</c:choose>
       <!-- End page content -->
    </div>
 
