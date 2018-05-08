@@ -148,19 +148,18 @@ function requestAjax(){
 
       <%@ include file="../tiles/headerBar.jsp"%>
       <!-- 이미지 클릭할때 큰 사이즈로 이미지를 볼수 있음-->
-      <div id="modal01" class="w3-modal w3-black" style="padding-top: 0"
-         onclick="this.style.display='none'">
+      <div id="modal01" class="w3-modal w3-black" style="padding-top: 0" onclick="this.style.display='none'">
          <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
-         <div
-            class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+         <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
             <img id="img01" class="w3-image">
             <p id="caption"></p>
          </div>
       </div>
 
       <div class="w3-container" id="reservation" style="margin-top: 75px">
+
          <h1 class="w3-xxxlarge w3-text-blue gray">
-            <b>Reservation</b>
+            <b>예약하기</b>
          </h1>
          <hr style="width: 50px; border: 5px solid blue" class="w3-round">
       </div>

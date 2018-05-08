@@ -19,7 +19,6 @@ public class DBManager {
 			DataSource ds = (DataSource)envContext.lookup("jdbc/test");
 
 			conn = ds.getConnection();
-			System.out.println("DB연동 성공!");
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("DB연동 실패!");

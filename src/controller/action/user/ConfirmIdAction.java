@@ -21,8 +21,6 @@ public class ConfirmIdAction implements Action{
 		String id = request.getParameter("userID");
 		UserDao uDao = UserDao.getInstance();
 		String result = uDao.confirmId(userId);
-		System.out.println(result);
-		System.out.println(id);
 
 		request.setAttribute("id", id);
 		request.setAttribute("result", result);

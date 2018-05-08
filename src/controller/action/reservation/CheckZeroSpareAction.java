@@ -22,7 +22,6 @@ public class CheckZeroSpareAction implements Action{
 	      int floor3 = pDao.floorSelect("f3");
 
 	      String result = "{\"0\":\""+floor1+"\",\"1\":\""+floor2+"\",\"2\":\""+floor3+"\"}";
-	      System.out.println(result);
 	      out.print(result);
 	}
 

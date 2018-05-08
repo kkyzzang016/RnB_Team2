@@ -9,7 +9,7 @@ public class ReservationVO {
    private String   userCarnum;
    private String   i_car_t;
    private String   o_car_t;
-   private int		money;
+   private int	money;
    private String	inOrOut;
    private String   discountInfo;
 

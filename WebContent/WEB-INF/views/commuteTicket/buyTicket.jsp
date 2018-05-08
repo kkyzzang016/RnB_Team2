@@ -59,9 +59,7 @@ function go_ticket3(){
 
 <%@ include file="../tiles/headerBar.jsp"%>
 	<div class="w3-container" style="margin-top: 80px">
-			<h1 class="w3-jumbo">
-				<b>Interior Design</b>
-			</h1>
+
 			<h1 class="w3-xxxlarge w3-text-blue gray">
 				<b>정액권 구매</b>
 			</h1>
@@ -91,6 +89,7 @@ function go_ticket3(){
           <input type="checkbox" name="check1">&nbsp동의합니다.
           <input type="hidden" name="fee" value="120000">
           <input type="hidden" name="imgsrc" value="imgs/tickets/oneMonth.JPG">
+          <input type="hidden" name="ticketInfo" value="${ticketInfo }">
           </p>
           <p align="center">
           <br>
@@ -114,6 +113,7 @@ function go_ticket3(){
           <input type="checkbox" name="check2" value="300000">&nbsp동의합니다.
           <input type="hidden" name="fee" value="300000">
           <input type="hidden" name="imgsrc" value="imgs/tickets/threeMonth.JPG">
+          <input type="hidden" name="ticketInfo" value="${ticketInfo }">
           </p>
           <p align="center">
           <br>
@@ -137,6 +137,7 @@ function go_ticket3(){
           <input type="checkbox" name="check3" value="520000">&nbsp동의합니다.
           <input type="hidden" name="fee" value="520000">
           <input type="hidden" name="imgsrc" value="imgs/tickets/sixMonth.JPG">
+          <input type="hidden" name="ticketInfo" value="${ticketInfo }">
           </p>
           <p align="center">
           <br>
@@ -148,7 +149,8 @@ function go_ticket3(){
     </div>
 	</div>
     </c:when>
-    <c:otherwise>error</c:otherwise>
+    <c:otherwise>
+    </c:otherwise>
 </c:choose>
 
 </div>

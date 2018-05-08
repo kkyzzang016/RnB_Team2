@@ -15,13 +15,10 @@ function checkSession(){
 }
 function goCancel(){
    if(confirm("예약 취소 하시겠습니까?")){
-
+	  alert('예약이 취소되었습니다.');
       document.del.submit();
-
    }
-
 }
-
 </script>
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -40,9 +37,7 @@ function goCancel(){
 
       <!-- 예약 확인 -->
       <div class="w3-container" id="confirm" style="margin-top: 75px">
-			<h1 class="w3-jumbo">
-				<b>Interior Design</b>
-			</h1>
+
          <h1 class="w3-xxxlarge w3-text-blue gray">
             <b>예약확인</b>
          </h1>
@@ -73,7 +68,7 @@ function goCancel(){
 				<tr >
 				<td colspan="2" style="text-align:right; padding-right: 30px;">
             <!-- <input type="button" onclick="goCancel();" value="cancel" > -->
-            <button onclick="goCancel();" value="cancel" >취소</button>
+            <button onclick="goCancel();" value="cancel" class="w3-button w3-blue gray w3-padding-large w3-hover-black">예약취소</button>
 				</td></tr>
          </table>
          	<input type="hidden" name="userCarnum" value="${reserveInfo.userCarnum}">

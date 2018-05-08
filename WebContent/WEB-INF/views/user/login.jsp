@@ -6,6 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<script>
+var formInfo = document.userinput;
+function goFindID(formInfo){
+	url = "Team2Servlet?command=goFindID";
+	open(url, "confirm", "toolbar = no, location=no, status = no, menubar = no, scrollbars = no, resizable = no, width =450, height = 320" );
+}
+
+function goFindPW(formInfo){
+    url = "Team2Servlet?command=goFindPW";
+    open(url, "confirm", "toolbar = no, location=no, status = no, menubar = no, scrollbars = no, resizable = no, width =450, height = 320" );
+}
+</script>
 </head>
 <body>
 
@@ -18,10 +31,8 @@
 <%@ include file="../tiles/headerBar.jsp"%>
 
         <div class="w3-container" id="contact" style="margin-top:75px">
-        <h1 class="w3-jumbo">
-            <b>Interior Design</b>
-         </h1>
-    <h1 class="w3-xxxlarge w3-text-blue gray"><b>Sign In.</b></h1>
+
+    <h1 class="w3-xxxlarge w3-text-blue gray"><b>로그인</b></h1>
     <font color="red">${message}</font>
     <hr style="width:50px;border:5px solid blue" class="w3-round">
 
@@ -35,15 +46,17 @@
         <label>P W</label>
         <input class="w3-input w3-border" type="password" name="userPassword" required>
       </div>
-      <input type = "submit" class="w3-button w3-center w3-hover-indigo" style="width:100%" >
+      <div class="w3-section" align="center">
+        <input type="button" name="findID" value="ID찾기" class="w3-button w3-center w3-hover-indigo" onclick="goFindID(this.form)">
+        <input type="button" name="findPW" value="PW찾기" class="w3-button w3-center w3-hover-indigo" onclick="goFindPW(this.form)">
+      </div>
+		<br>
+        <input type = "submit" class="w3-button w3-center w3-hover-indigo" value="로그인" style="width:100%">
 
     </form>
   </div>
-
-   </div>
+</div>
 
 <%@ include file="../tiles/footerBar.jsp"%>
-
-
 </body>
 </html>

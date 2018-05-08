@@ -53,9 +53,7 @@ function goComplete(){
 
 <%@ include file="../tiles/headerBar.jsp"%>
 	<div class="w3-container" style="margin-top: 80px">
-			<h1 class="w3-jumbo">
-				<b>Interior Design</b>
-			</h1>
+
 			<h1 class="w3-xxxlarge w3-text-blue gray">
 				<b>정액권 구매</b>
 			</h1>
@@ -102,6 +100,7 @@ function goComplete(){
 	<input type="button" class="w3-button w3-blue gray w3-padding-large w3-hover-black" name="payConfirm" onclick="agree()" value="결제하기">
 	<h3 class="w3-center" style="color:red">버튼을 누른 후 잠시만 기다려주세요!</h3>
 	</div>
+	<input type="hidden" name="ticketInfo" value="${ticketInfo}">
 	</form>
 	<!-- 본문 끝 -->
 	</div>

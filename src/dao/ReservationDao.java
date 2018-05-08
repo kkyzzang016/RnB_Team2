@@ -76,7 +76,7 @@ public class ReservationDao {
 
       return reservation;
    }
-   public TicketVO rtselectone(String n) {
+   public TicketVO rtselectone(String userCarnum) {
 
 
        TicketVO ticket = new TicketVO();
@@ -85,7 +85,7 @@ public class ReservationDao {
        try {
           conn = DBManager.getConnection();
           pstmt = conn.prepareStatement(sql);
-          pstmt.setString(1,n);
+          pstmt.setString(1,userCarnum);
           rs = pstmt.executeQuery();
           while (rs.next()) {
              ticket.setUserCarnum(rs.getString("userCarnum"));
@@ -207,7 +207,7 @@ public class ReservationDao {
 	public List<ReservationVO> getUsageList(String userCarnum){
 
 		List<ReservationVO> usageList = new ArrayList<>();
-		String sql = "select userCarnum, i_car_t, o_car_t, money, inOrOut, discountInfo from reservation where userCarnum=?";
+		String sql = "select userCarnum, i_car_t, o_car_t, money, inOrOut, discountInfo from reservation where userCarnum=? AND inOrOut='out'";
 		try {
 	         conn = DBManager.getConnection();
 	         pstmt = conn.prepareStatement(sql);
@@ -220,8 +220,8 @@ public class ReservationDao {
 	        	 rVo.setI_car_t(rs.getString("i_car_t"));
 	        	 rVo.setO_car_t(rs.getString("o_car_t"));
 	        	 rVo.setMoney(rs.getInt("money"));
-	        	 rVo.setInOrOut(rs.getString("inOrOut"));
-	        	 rVo.setDiscountInfo(rs.getString("discountInfo"));
+	        	 rVo.setInOrOut(changeUsageValue(rs.getString("inOrOut")));
+	        	 rVo.setDiscountInfo(changeUsageValue(rs.getString("discountInfo")));
 	        	 usageList.add(rVo);
 	         }
 	      } catch (SQLException e) {
@@ -231,5 +231,19 @@ public class ReservationDao {
 	      }
 
 		return usageList;
+	}
+	public String changeUsageValue(String anything) {
+
+		String result=null;
+		if(anything.equals("out")) result = "출차";
+		else if(anything.equals("in")) result = "주차중";
+		else if(anything.equals("cancel")) result = "예약취소";
+		else if(anything.equals("food")) result = "식당이용";
+		else if(anything.equals("company")) result = "회사방문";
+		else if(anything.equals("commuterTicket")) result = "정액권";
+		else if(anything.equals("no")) result = "없음";
+		else result="no";
+
+		return result;
 	}
 }

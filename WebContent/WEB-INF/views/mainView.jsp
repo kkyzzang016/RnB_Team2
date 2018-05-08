@@ -65,15 +65,6 @@ body, html {
             document.form2.spare.value = spare[1];
             document.form3.spare.value = spare[2];
 
-            if (spare[0] == 0) {
-               document.form1.res.disabled = true;
-            }
-            if (spare[1] == 0) {
-               document.form2.res.disabled = true;
-            }
-            if (spare[2] == 0) {
-               document.form3.res.disabled = true;
-            }
          }
       });
    }
@@ -126,7 +117,7 @@ body, html {
    </div>
    <div class="w3-main box"
       style="margin-left: 300px; margin-right: 0px; height:auto;">
-   <div class="w3-animate-opacity bgimg w3 box">
+   <div class="w3-animate-opacity bgimg">
    <img src="imgs/maincar.jpg" style="width:100%; height:100%;">
    </div>
 </div>
@@ -156,7 +147,7 @@ body, html {
                <tr>
                   <td><b>주차권 구매</b></td>
                   <td><b>예약하기</b></td>
-                  <td><b>주차하기</b></td>
+                  <td><b>예약확인</b></td>
                </tr>
             </table>
 
@@ -166,18 +157,13 @@ body, html {
    </div>
 
    <!-- !PAGE CONTENT! -->
-   <div class="w3-main box" style="margin-left: 340px; margin-right: 40px">
-
+   <div class="w3-main box" style="margin-left: 340px; margin-right: 40px; height:auto;">
       <%@ include file="../views/tiles/headerBar.jsp"%>
-
       <div class="w3-row-padding">
-
-
-         <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
-
+         <div class="w3-container w3-padding-64" >
             <div class="w3-col">
                <div class="w3-padding-16">
-                  <h1 class="w3-xxxlarge w3-text-blue gray">
+                  <h1 class="w3-xxxlarge w3-text-blue">
 
                      <b>주차장 소개 </b>
                   </h1>
@@ -280,35 +266,50 @@ body, html {
          </div>
       </div>
    </div>
-   <div class="w3-main box" style="margin-left: 340px; margin-right: 40px">
+   <div class="w3-main box" style="margin-left: 340px; margin-right: 40px; padding-bottom: 120px; height: auto;">
 
-      <div class="w3-container" id="contact" style="margin-top: 75px">
-         <h1 class="w3-xxxlarge w3-text-blue gray">
-            <b>Contact.</b>
+      <div class="w3-container w3-padding-64" id="contact" >
+         <div class="w3-col">
+               <div class="w3-padding-16">
+                  <h1 class="w3-xxxlarge w3-text-blue">
+            <b>문의사항</b>
          </h1>
          <hr style="width: 50px; border: 5px solid blue" class="w3-round">
-         <p>하고싶은 말</p>
+         </div>
+          <h2>서비스 개선을 위한 문의 및 건의사항을 적어주세요!</h2>
+   		 <h3 style="color:red">확인 후 신속한 서비스 개선을 약속드립니다!</h3><br>
 
          <form action="Team2Servlet?command=contact" target="_blank"
             method="post">
             <div class="w3-section">
-               <label>Name</label> <input class="w3-input w3-border" type="text"
+               <label>성함</label> <input class="w3-input w3-border" type="text"
                   name="name" required>
             </div>
             <div class="w3-section">
-               <label>Email</label> <input class="w3-input w3-border" type="text"
+               <label>Email 주소</label> <input class="w3-input w3-border" type="text"
                   name="email" required>
             </div>
             <div class="w3-section">
-               <label>Message</label> <input class="w3-input w3-border"
+               <label>보내는 메시지</label> <input class="w3-input w3-border"
                   type="text" name="message" required>
             </div>
-            <button type="submit"
-               class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom">Send
-               Message</button>
+            <input type="submit" class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom" value="보내기">
          </form>
       </div>
-      <div id="map" style="width: 100%; height: 300px;"></div>
+      </div>
+      </div>
+
+
+<div class="w3-main box" style="margin-left: 340px; margin-right: 40px;  margin-bottom: 0px; padding-bottom: 120px;">
+<div class="w3-container w3-padding-64 " style="padding:50px 0px 150px 0px; height: 100%;">
+   <div class="w3-col">
+         <div class="w3-padding-16">
+                  <h1 class="w3-xxxlarge w3-text-blue">
+            <b>지도</b>
+         </h1>
+         <hr style="width: 50px; border: 5px solid blue" class="w3-round">
+         </div>
+<div id="map" style="width: 100%; height: 500px; margin-bottom: 30px;"></div></div>
       <script>
          var map = new naver.maps.Map('map');
          var myaddress = '구미로 8';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
@@ -351,12 +352,16 @@ body, html {
                               });
                      });
       </script>
+      </div>
+</div>
+
+   <div class="w3-main box" style=" margin-left: 300px; margin-right: 0px">
+    <div style="margin-top: -75px;">
+   <div style="margin-left: -300px;">
+   <%@ include file="../views/tiles/footerBar.jsp"%>
    </div>
-
-
-
-   <div class="box"><%@ include file="../views/tiles/footerBar.jsp"%></div>
-
+   </div>
+</div>
    <script type="text/javascript">
       function openFloor(evt, Namef) {
          var i, x, tablinks;

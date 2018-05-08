@@ -19,11 +19,8 @@ public class BillingDiscountAction implements Action{
 		ParkingDao pDao = ParkingDao.getInstance();
 
 		String discountName = request.getParameter("billkey");
-		System.out.println(discountName);
 		String totalTime = request.getParameter("timekey");
-		System.out.println(totalTime);
 		int discountMinute = pDao.getDiscountInfo(discountName);
-		System.out.println(discountMinute);
 		int money=0;
 
 		int discountTime = Integer.parseInt(totalTime) - discountMinute;

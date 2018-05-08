@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import controller.action.Action;
 import dao.ReservationDao;
 import dto.ReservationVO;
+import dto.TicketVO;
 import dto.UserVO;
 
 public class UsageDetailsAction implements Action{
@@ -25,8 +26,16 @@ public class UsageDetailsAction implements Action{
 
 		ReservationDao rDao = ReservationDao.getInstance();
 		List<ReservationVO> usageList = rDao.getUsageList(uVo.getUserCarnum());
+		TicketVO tVo = rDao.rtselectone(uVo.getUserCarnum());
 
 		request.setAttribute("usageList", usageList);
+
+		if(tVo.getUserName()==null) {
+			request.setAttribute("ticketInfo", "nodata");
+		}else {
+			request.setAttribute("ticketInfo", tVo);
+		}
+
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

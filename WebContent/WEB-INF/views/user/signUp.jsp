@@ -18,10 +18,8 @@
 <%@ include file="../tiles/headerBar.jsp"%>
 
 		  <div class="w3-container" id="contact" style="margin-top:75px">
-		  <h1 class="w3-jumbo">
-				<b>Interior Design</b>
-			</h1>
-    <h1 class="w3-xxxlarge w3-text-blue gray"><b>Sign Up.</b></h1>
+
+    <h1 class="w3-xxxlarge w3-text-blue gray"><b>회원가입</b></h1>
     <hr style="width:50px;border:5px solid blue" class="w3-round">
 
     <form action="Team2Servlet?command=addUser" onsubmit="return joincheck();" method="post" name="userinput">
@@ -31,7 +29,8 @@
       </div>
       <div class="w3-section">
         <label>비밀번호</label>
-        <input class="w3-input w3-border" type="password" name="userPassword" required>
+        <input class="w3-input w3-border" type="password" name="userPassword"
+        placeholder="8~15자 영문,숫자 1자 이상,특수문자 1자 이상으로 조합해주세요" required>
       </div>
       <div class="w3-section">
         <label>비밀번호 확인</label>
@@ -43,11 +42,11 @@
       </div>
       <div class="w3-section">
         <label>이메일 <h3 style="color:red">이메일 인증 서비스를 위하여 정확한 정보를 입력해주세요.</h3></label>
-        <input class="w3-input w3-border" type="text" name="userEmail" required>
+        <input class="w3-input w3-border" type="email" name="userEmail" placeholder="honggildong@korea.com" required>
       </div>
       <div class="w3-section">
         <label>차량번호</label>
-        <input class="w3-input w3-border" type="text" name="userCarnum" required>
+        <input class="w3-input w3-border" type="text" name="userCarnum" placeholder="OO가 OOOO" required>
       </div>
       <div class="w3-section">
         <label>휴대전화</label>
@@ -64,13 +63,51 @@
 
 function joincheck() {
    var userinput = document.userinput;
+   var pw = document.userinput.userPassword.value;
+   var alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+   var number = "1234567890";
+   var sChar = "-_=+\|()*&^%$#@!~`?></;,.:'";
 
+   var sChar_Count = 0;
+   var alphaCheck = false;
+   var numberCheck = false;
+
+   //비밀번호
+   if(8 <= pw.length || pw.length <= 15){
+	 for(var i=0; i<pw.length; i++){
+	  if(sChar.indexOf(pw.charAt(i)) != -1){
+	   sChar_Count++;
+	  }
+	  if(alpha.indexOf(pw.charAt(i)) != -1){
+	   alphaCheck = true;
+	  }
+	  if(number.indexOf(pw.charAt(i)) != -1){
+	   numberCheck = true;
+	  }
+	}
+	  if(sChar_Count < 1 || alphaCheck != true || numberCheck != true){
+       alert("비밀번호는 8~15자 영문,숫자 1자 이상,특수문자 1자 이상으로 조합해주세요");
+       userinput.userPassword.focus();
+	  return false;
+	 }
+
+	}else{
+	  alert("비밀번호는 8~15자 영문,숫자 1자 이상,특수문자 1자 이상으로 조합해주세요");
+	  userinput.userPassword.focus();
+	 return false;
+	}
+
+   //기타
    if (userinput.userPassword.value != userinput.userPasswordconfirm.value) {
-      alert("비밀번호를 동일하게 입력하세요");
+      alert("비밀번호가 일치하지 않습니다.");
+      userinput.userPassword.focus();
       return false;
    }
-
-
+   if (userinput.userEmail.value.search(/(\S+)@(\S+)\.(\S+)/) == -1 ) {
+	  alert('올바른 이메일 형식이 아닙니다.');
+      userinput.userEmail.focus();
+      return false;
+   }
 }
 
 //아이디 중복 여부를 판단

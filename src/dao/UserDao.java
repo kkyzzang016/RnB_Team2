@@ -92,7 +92,6 @@ public class UserDao {
 	         rs = pstmt.executeQuery();
 	         while (rs.next()) {
 	            tempId=rs.getString("userId");
-	            System.out.println(tempId);
 	         }
 	      } catch (SQLException e) {
 	         e.printStackTrace();
@@ -152,5 +151,55 @@ public class UserDao {
 	      }
 
 		return date;
+	}
+
+	public String selectUserPassWord(String userID, String userEmail) {
+		String result ="";
+		String sql = "select userPassword from user where userID=? AND userEmail=?";
+		try {
+	         conn = DBManager.getConnection();
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1,userID);
+	         pstmt.setString(2,userEmail);
+	         rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            result = rs.getString("userPassword");
+	            System.out.println(result);
+	         }
+	         else {
+	        	result="nodata";
+	        	System.out.println(result);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }
+		return result;
+	}
+
+	public String selectUserID(String userName, String userEmail) {
+		String result ="";
+		String sql = "select userID from user where userName=? AND userEmail=?";
+		try {
+	         conn = DBManager.getConnection();
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1,userName);
+	         pstmt.setString(2,userEmail);
+	         rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            result = rs.getString("userID");
+	            System.out.println(result);
+	         }
+	         else {
+	        	result="nodata";
+	        	System.out.println(result);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBManager.close(conn, pstmt, rs);
+	      }
+		return result;
 	}
 }

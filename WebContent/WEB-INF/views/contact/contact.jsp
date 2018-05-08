@@ -17,30 +17,28 @@
 <%@ include file="../tiles/headerBar.jsp"%>
 
 <div class="w3-container" style="margin-top: 80px" id="showcase">
-			<h1 class="w3-jumbo">
-				<b>Interior Design</b>
-			</h1>
+
 			<h1 class="w3-xxxlarge w3-text-blue gray">
-				<b>Contact.</b>
+				<b>문의사항</b>
 			</h1>
 			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
 
-    <h2>서비스 개선을 위한 건의사항을 적어주세요!</h2>
+    <h2>서비스 개선을 위한 문의 및 건의사항을 적어주세요!</h2>
     <h3 style="color:red">확인 후 신속한 서비스 개선을 약속드립니다!</h3><br>
     <form action="Team2Servlet?command=contact" target="_blank" method="post">
       <div class="w3-section">
-        <label>발신자 성함</label>
+        <label>성함</label>
         <input class="w3-input w3-border" type="text" name="name" required>
       </div>
       <div class="w3-section">
-        <label>발신자 Email 주소</label>
+        <label>Email 주소</label>
         <input class="w3-input w3-border" type="text" name="email" required>
       </div>
       <div class="w3-section">
         <label>보내는 메시지</label>
         <input class="w3-input w3-border" type="text" name="message" required>
       </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom">보내기</button>
+      <input type="submit" class="w3-button w3-block w3-padding-large w3-blue gray w3-margin-bottom" value="보내기">
     </form>
 	</div>
 </div>

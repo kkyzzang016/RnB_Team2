@@ -22,14 +22,21 @@ public class ReserveConfirmAction implements Action{
       HttpSession session = request.getSession(true);
       UserVO uVo = (UserVO) session.getAttribute("userInfo");
 
-      ReservationDao rDao = ReservationDao.getInstance();
-      ReservationVO rVo = rDao.rselectone(uVo.getUserCarnum());
-
-      request.setAttribute("reserveInfo", rVo);
-      request.setAttribute("userName", uVo.getUserName());
-      if(uVo.getUserName()==null || rVo.getUserCarnum()==null) {
-      request.setAttribute("message", "xxxx");
+      if(uVo==null) {
+    	  request.setAttribute("message", "xxxx");
       }
+      else {
+    	  ReservationDao rDao = ReservationDao.getInstance();
+
+          ReservationVO rVo = rDao.rselectone(uVo.getUserCarnum());
+
+          request.setAttribute("reserveInfo", rVo);
+          request.setAttribute("userName", uVo.getUserName());
+          if(uVo.getUserName()==null || rVo.getUserCarnum()==null) {
+          request.setAttribute("message", "xxxx");
+          }
+      }
+
 
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);

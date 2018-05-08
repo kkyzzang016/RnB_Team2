@@ -59,7 +59,10 @@ function go_goBuyTicket(){
 }
 function go_details(){
 	   location.href="Team2Servlet?command=usageDetails";
-	}
+}
+function go_board(){
+	   location.href = "Team2Servlet?command=board_list"
+}
 // Modal Image Gallery
 function onClick(element) {
   document.getElementById("img01").src = element.src;
@@ -68,8 +71,8 @@ function onClick(element) {
   captionText.innerHTML = element.alt;
 }
 </script>
-<link rel="stylesheet"
-href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
 </head>
 <body>
@@ -78,11 +81,10 @@ href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha38
 <nav class="w3-sidebar w3-blue gray w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:28px">Close Menu</a>
   <div class="w3-container">
-    <h3 class="w3-padding-64" style="font-size:32px" align="center"><a href="Team2Servlet?command=main"><b><i class="fas fa-moon"></i>RnB_Team2<br>Parking Lots</b></a></h3>
+    <h3 class="w3-padding-64" style="font-size:32px" align="center"><a href="Team2Servlet?command=main"><b><i class="fas fa-moon"></i>RnB Team2<br>Parking Lots</b></a></h3>
   </div>
-
   <div class="w3-bar-block">
-    <a href="#" onclick="go_home()" class="w3-bar-item w3-button w3-hover-white" style="font-size:32px"><i class="fas fa-home"></i>홈</a>
+    <a href="#" onclick="go_home()" class="w3-bar-item w3-button w3-hover-white" style="font-size:32px"><i class="fas fa-home"></i> 홈</a>
 	<c:choose>
 	<c:when test="${userInfo eq null }">
 	<a href="#" onclick="go_signUp()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="fas fa-user-plus"></i> 회원가입</a>
@@ -98,6 +100,7 @@ href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha38
 	</c:otherwise>
 	</c:choose>
     <a href="#" onclick="go_contact()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-comment-alt"></i> 문의사항</a>
+    <a href="#" onclick="go_board()" class="w3-bar-item w3-button w3-hover-white" style="font-size:28px"><i class="far fa-clipboard"></i> 자유 게시판</a>
 
   </div>
 </nav>

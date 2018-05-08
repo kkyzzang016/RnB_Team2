@@ -42,4 +42,22 @@ public class PayDao {
 		         DBManager.close(conn, pstmt);
 		      }
 	   }
+
+	   public void updateCommuterTicketInfo(PayVO payVo) {
+		   String sql = "update commuterTicket set startDate=?, endDate=? where userCarnum=?";
+
+		   try {
+		         conn = DBManager.getConnection();
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setString(1,payVo.getStartDate());
+		         pstmt.setString(2,payVo.getEndDate());
+		         pstmt.setString(3,payVo.getUserCarnum());
+		         pstmt.executeUpdate();
+
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         DBManager.close(conn, pstmt);
+		      }
+	   }
 }

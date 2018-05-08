@@ -97,9 +97,7 @@ function goComplete(){
 
 <%@ include file="../tiles/headerBar.jsp"%>
 	<div class="w3-container" style="margin-top: 80px">
-			<h1 class="w3-jumbo">
-				<b>Interior Design</b>
-			</h1>
+
 			<h1 class="w3-xxxlarge w3-text-blue gray">
 				<b>Billing.</b>
 			</h1>

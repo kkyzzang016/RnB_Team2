@@ -2,6 +2,7 @@ package controller.action.commterTicket;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -28,10 +29,22 @@ public class PayCompleteAction implements Action{
 		UserVO currentUser = (UserVO) session.getAttribute("userInfo");
 
 		String fee = request.getParameter("fee");
-		LocalDateTime dayTime = LocalDateTime.now();
-	    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String ticketInfo = request.getParameter("ticketInfo");
+
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 	    LocalDateTime endTime=null;
+		LocalDateTime dayTime = null;
+		LocalDate temp=null;
+		String [] userTicket=null;
+
+		if(ticketInfo==null) {
+			dayTime = LocalDateTime.now();
+		}else {
+			userTicket = ticketInfo.split("\\#");
+			temp = LocalDate.parse(userTicket[3].substring(0, 19), dateTimeFormatter);
+			dayTime = LocalDateTime.of(temp, LocalDateTime.now().toLocalTime());
+		}
 
 	    switch(fee) {
 	    case "120000":
@@ -47,7 +60,14 @@ public class PayCompleteAction implements Action{
 	    	break;
 	    }
 
-	    String startDate = dayTime.format(dateTimeFormatter);
+	    String startDate=null;
+
+	    if(userTicket!=null) {
+	    	startDate = userTicket[2];
+	    }else {
+	    	startDate = dayTime.format(dateTimeFormatter);
+	    }
+
 	    String endDate = endTime.format(dateTimeFormatter);
 
 	    PayDao pDao = PayDao.getInstance();
@@ -57,11 +77,14 @@ public class PayCompleteAction implements Action{
 		payVo.setStartDate(startDate);
 		payVo.setEndDate(endDate);
 
-		pDao.purchasedCommuterTicketInfo(payVo);
+		if(userTicket!=null) {
+			pDao.updateCommuterTicketInfo(payVo);
+	    }else {
+	    	pDao.purchasedCommuterTicketInfo(payVo);
+	    }
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 
 	}
-
 }

@@ -25,10 +25,8 @@ function checkSession(){
 <%@ include file="../tiles/headerBar.jsp"%>
 
  <div class="w3-container" id="contact" style="margin-top:75px">
-        <h1 class="w3-jumbo">
-            <b>Interior Design</b>
-         </h1>
-    <h1 class="w3-xxxlarge w3-text-blue gray"><b>Login Complete.</b></h1>
+
+    <h1 class="w3-xxxlarge w3-text-blue gray"><b>로그인 되었습니다.</b></h1>
     <hr style="width:50px;border:5px solid blue" class="w3-round">
 
    </div>

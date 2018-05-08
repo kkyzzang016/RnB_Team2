@@ -16,9 +16,6 @@ public class IndexAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "WEB-INF/views/mainView.jsp";
 
-		TestDao tDao = TestDao.getInstance();
-		String result = tDao.getClient();
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
